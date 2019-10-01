@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/1lab.dir/main.cpp.o CMakeFiles/1lab.dir/book.cpp.o CMakeFiles/1lab.dir/character.cpp.o  -o 1lab 
