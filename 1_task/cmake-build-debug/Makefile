@@ -150,6 +150,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+students.o: students.cpp.o
+
+.PHONY : students.o
+
+# target to build an object file
+students.cpp.o:
+	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/students.cpp.o
+.PHONY : students.cpp.o
+
+students.i: students.cpp.i
+
+.PHONY : students.i
+
+# target to preprocess a source file
+students.cpp.i:
+	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/students.cpp.i
+.PHONY : students.cpp.i
+
+students.s: students.cpp.s
+
+.PHONY : students.s
+
+# target to generate assembly for a file
+students.cpp.s:
+	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/students.cpp.s
+.PHONY : students.cpp.s
+
+tasks.o: tasks.cpp.o
+
+.PHONY : tasks.o
+
+# target to build an object file
+tasks.cpp.o:
+	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/tasks.cpp.o
+.PHONY : tasks.cpp.o
+
+tasks.i: tasks.cpp.i
+
+.PHONY : tasks.i
+
+# target to preprocess a source file
+tasks.cpp.i:
+	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/tasks.cpp.i
+.PHONY : tasks.cpp.i
+
+tasks.s: tasks.cpp.s
+
+.PHONY : tasks.s
+
+# target to generate assembly for a file
+tasks.cpp.s:
+	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/tasks.cpp.s
+.PHONY : tasks.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +216,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... students.o"
+	@echo "... students.i"
+	@echo "... students.s"
+	@echo "... tasks.o"
+	@echo "... tasks.i"
+	@echo "... tasks.s"
 .PHONY : help
 
 

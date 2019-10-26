@@ -74,12 +74,12 @@ preinstall:
 CMakeFiles/1_task.dir/all:
 	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/depend
 	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target 1_task"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target 1_task"
 .PHONY : CMakeFiles/1_task.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/1_task.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/1_task.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/1_task.dir/rule
