@@ -46,7 +46,7 @@ double funcF<std::string>( const std::string& input){
         if (i - '0' > 0 && i - '0' <= 9)
             div /= (i - '0');
     }
-    return div;
+    return div*div;
 }
 
 template<typename T, typename  V>
