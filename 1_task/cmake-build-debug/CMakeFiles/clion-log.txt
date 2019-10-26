@@ -1,6 +1,4 @@
 /snap/clion/88/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task
 -- Configuring done
-Warning: Source file "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.cpp" is listed multiple times for target "1_task".
-Warning: Source file "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.cpp" is listed multiple times for target "1_task".
 -- Generating done
 -- Build files have been written to: /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug

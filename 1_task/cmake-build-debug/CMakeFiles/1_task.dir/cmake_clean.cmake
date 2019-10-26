@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "1_task"
   "1_task.pdb"
   "CMakeFiles/1_task.dir/main.cpp.o"
+  "CMakeFiles/1_task.dir/model.cpp.o"
   "CMakeFiles/1_task.dir/students.cpp.o"
   "CMakeFiles/1_task.dir/tasks.cpp.o"
 )

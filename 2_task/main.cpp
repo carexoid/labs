@@ -2,6 +2,7 @@
 #include <cmath>
 #include<string>
 #include <cassert>
+#include <vector>
 
 
 template<typename T>
@@ -54,21 +55,36 @@ double funcF(const std::pair<T, V>& input) {
     return pow(funcF(input.second), sin(579 * funcF(input.first)));
 }
 
+template<typename T>
+double funcF(const std::vector<T> &input) {
+    double maximum = -2;
+    for (const auto& i: input)
+        maximum = std::max( maximum, cos(funcF(i) - 879));
+    return maximum;
+}
 int main() {
     int intTest1 = 10, intTest2 = -1;
     double douTest1 = 10, douTest2 = 1.5;
     bool boolTest = true;
-    std::string strTest = "aretuyhkovf";
-    std::pair<int,double> pairIntDouTest1 = {intTest2,douTest2};
-    std::pair<std::string,double> pairIntDouTest2 = {strTest,douTest2};
+    std::string strTest = "ar678etuyhkovf";
+    std::pair<int,double> pairIntDouTest = {intTest2,douTest2};
+    std::pair<std::string,double> pairStrDouTest = {strTest,douTest2};
+    std::vector<int> vecIntTest = {1, 4, 5, 3, 6};
+    std::vector<double> vecDouTest = {10.1, 40.1, 7.8, 4.6, 9.05};
+    std::pair<std::string, std::vector<double> > pairStrVecTest = {strTest,vecDouTest};
     std::cout << "\nTesting (int) 10 as parametr: " << funcF(intTest1);
     std::cout << "\nTesting (double) 10 as parametr: " << funcF(douTest1);
     std::cout << "\nTesting (int) -1 as parametr: " << funcF(intTest2);
     std::cout << "\nTesting (int) -10 as parametr: " << funcF(10*intTest2);
-    std::cout << "\nTesting (string) aretuyhkovf as parametr: " << funcF(strTest);
-    std::cout << "\nTesting (string) aretuyhkovfw34e4r as parametr: " << funcF(strTest + "w34e4r");
-    std::cout << "\nTesting (pair) { (int) -1, (double) 1.5 } as parametr: " << funcF(pairIntDouTest1);
-    std::cout << "\nTesting (pair) { (string) aret1uy2hkov5f, (double) 1.5 } as parametr: " << funcF(pairIntDouTest2);
+    std::cout << "\nTesting (string) ar678etuyhkovf as parametr: " << funcF(strTest);
+    std::cout << "\nTesting (string) are678tuyhkovfw34e4r as parametr: " << funcF(strTest + "w34e4r");
+    std::cout << "\nTesting (pair) { (int) -1, (double) 1.5 } as parametr: " << funcF(pairIntDouTest);
+    std::cout << "\nTesting (pair) { (string) aretuyhkovf, (double) 1.5 } as parametr: " << funcF(pairStrDouTest);
+    std::cout << "\nTesting (vector<int>) { 1, 4, 5, 3, 6} as parametr: " << funcF(vecIntTest);
+    std::cout << "\nTesting (vector<double>) {1.1, 4.1, 7.8, 4.6, 9.05} as parametr: " << funcF(vecDouTest);
+    std::cout << "\nTesting (pair) { (string) are678tuyhkovfw34e4r, (vector<double>) {1.1, 4.1, 7.8, 4.6, 9.05} } as parametr: " << funcF(pairStrDouTest);
+
+
     std::cout << "\nTesting (bool) true as parametr: " << funcF(boolTest);
 
 

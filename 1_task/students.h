@@ -16,12 +16,13 @@ class Student {
     std::vector< std::pair <std::string, int> > knowledges;
     int strategy; // 1 - the easiest, 2 - the hardest, 3 - more points, 4 - the best knoledges
 public:
-    Student() = default;
+    Student();
     Student(const std::vector< std::pair <std::string, int> > &baseKnowledges, int baseStrategy);
     int getLevel (const std::string& subj) const;
     int getPoints() const;
     int getStrategy() const;
 
+    void setStrategy (int newStrategy);
 
 };
 
