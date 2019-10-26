@@ -1,4 +1,4 @@
-# Install script for directory: /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/untitled
+# Install script for directory: /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/2_task
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/untitled/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/2_task/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
