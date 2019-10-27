@@ -132,6 +132,7 @@ double predictRes(const std::vector< std::shared_ptr<Base> > &vec){
             Scopy = countRes(*cur,Scopy);
             cur = cur->sample;
         }
+        Scopy = countRes(*cur,Scopy);
     }
     return Scopy;
 }
@@ -139,12 +140,12 @@ double predictRes(const std::vector< std::shared_ptr<Base> > &vec){
 void testPredictor(){
     std::vector<std::shared_ptr<Base> > vec = {std::shared_ptr<Alpha> (new Alpha(std::shared_ptr <Beta> (new Beta( std::shared_ptr<Green> (new Green()))))),
                                                std::shared_ptr<Red> (new Red(std::shared_ptr <Green> (new Green( std::shared_ptr<Alpha> (new Alpha())))))};
-    std::cout << "Predicted value: " << predictRes(vec);
+    std::cout << "Predicted value after deleting vector: " << predictRes(vec) << '\n';
 }
 int main() {
     testSomeObjects();
-
+    std::cout << "Got value after running testSomeObjects: " << S << '\n';
     testPredictor();
-    std::cout << "Got value: " << S;
+    std::cout << "Got value after deleting vector: " << S;
     return 0;
 }
