@@ -5,6 +5,11 @@ CMakeFiles/1_task.dir/main.cpp.o: ../main.cpp
 CMakeFiles/1_task.dir/main.cpp.o: ../students.h
 CMakeFiles/1_task.dir/main.cpp.o: ../tasks.h
 
+CMakeFiles/1_task.dir/model.cpp.o: ../model.cpp
+CMakeFiles/1_task.dir/model.cpp.o: ../model.h
+CMakeFiles/1_task.dir/model.cpp.o: ../students.h
+CMakeFiles/1_task.dir/model.cpp.o: ../tasks.h
+
 CMakeFiles/1_task.dir/students.cpp.o: ../students.cpp
 CMakeFiles/1_task.dir/students.cpp.o: ../students.h
 CMakeFiles/1_task.dir/students.cpp.o: ../tasks.h

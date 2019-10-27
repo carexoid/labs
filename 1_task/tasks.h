@@ -23,18 +23,14 @@ class Task {
     int type; // 1-complexivity, 2-av point, 3-min points, 4-random
 public:
     Task() = default;
-    Task(std::vector < std::string> disciplines, int points, int typeOfTask);
+    Task(std::vector < std::string>& disciplines, int points, int typeOfTask);
     int pointsFor (const Student& student) const;
     int daysFor (const Student& student) const;
     int getMaxPonts() const;
     int getComlexity() const;
+    int getMaxComplexity() const;
     std::vector< std::string > getKnowledges() const;
-
-
-
-
-
-
+    bool hasKnowledge(const std::string& searched) const;
 
 };
 

@@ -5,7 +5,7 @@
 #include "tasks.h"
 #include "students.h"
 
-Task::Task(std::vector<std::string> disciplines, int points, int typeOfTask) : knowledges(disciplines), maxPoints(points), type(typeOfTask) {
+Task::Task(std::vector<std::string> &disciplines, int points, int typeOfTask) : knowledges(disciplines), maxPoints(points), type(typeOfTask) {
 }
 
 int Task::pointsFor(const Student &student) const {
@@ -65,4 +65,15 @@ std::vector<std::string> Task::getKnowledges() const {
 
 int Task::getMaxPonts() const {
     return maxPoints;
+}
+
+int Task::getMaxComplexity() const {
+    return maxComplexity;
+}
+
+bool Task::hasKnowledge(const std::string& searched) const {
+    for(const auto &i: knowledges)
+        if (searched == i)
+            return 1;
+    return 0;
 }

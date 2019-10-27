@@ -22,6 +22,10 @@ class Model {
 public:
     Model() = default;
     Model (int numOfstudents, int numOfTasks, const std::vector<std::string>& subjectsIn); //constructor with random generation of data
+    void addRandStudents (int numOfStu);
+    void addRandTasks (int numOfTas);
+    void startTimeLimSim (int days); //gets number of days for simulation
+    void startPointLimSim (int points); //gets number of points to be reached throe the simulation;
 
 
 };

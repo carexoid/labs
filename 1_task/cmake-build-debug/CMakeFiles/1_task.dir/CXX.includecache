@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.cpp
+students.h
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.h
+tasks.h
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.h
+
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.h
+vector
+-
+string
+-
+algorithm
+-
+
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.h
+random
+-
+ctime
+-
+cmath
+-
+vector
+-
+string
+-
+students.h
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.h
+
