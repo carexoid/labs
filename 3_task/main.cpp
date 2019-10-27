@@ -8,6 +8,10 @@ class Base{
 protected:
     int N;
     std::shared_ptr<Base> sample;
+    int counter(){
+        static int n = 0;
+        return ++n;
+    }
 public:
     Base() = default;
     virtual void setN(int n){}
@@ -22,11 +26,11 @@ public:
 
 class Alpha : public Base{
 public:
-    Alpha (int n){
-        N = n;
+    Alpha (){
+        N = counter();
     }
-    Alpha (int n, std::shared_ptr<Base> example){
-        N = n;
+    Alpha (std::shared_ptr<Base> example){
+        N = counter();
         sample = example;
     }
     void setN (int n) override {
@@ -48,11 +52,11 @@ public:
 };
 class Beta: public Base{
 public:
-    Beta (int n){
-        N = n;
+    Beta (){
+        N = counter();
     }
-    Beta (int n, std::shared_ptr<Base> example){
-        N = n;
+    Beta ( std::shared_ptr<Base> example){
+        N = counter();
         sample = example;
     }
     void setN (int n) override {
@@ -75,9 +79,9 @@ public:
 
 class Red : public Alpha{
 public:
-    Red (int n): Alpha(n){
+    Red (): Alpha(){
     }
-    Red( int n, std::shared_ptr<Base> example) : Alpha(n, example) {
+    Red( std::shared_ptr<Base> example) : Alpha(example) {
     }
     ~Red(){
         std::cout << "Red " << N << '\n';
@@ -87,9 +91,9 @@ public:
 
 class Green : public Alpha{
 public:
-    Green (int n): Alpha(n){
+    Green (): Alpha(){
     }
-    Green( int n, std::shared_ptr<Base> example) : Alpha(n, example) {
+    Green( std::shared_ptr<Base> example) : Alpha( example) {
     }
     ~Green(){
         std::cout << "Green " << N << '\n';
@@ -98,12 +102,11 @@ public:
 };
 
 void testSomeObjects(){
-    int n = 0;
-    std::shared_ptr<Alpha> B(new Alpha(++n,std::shared_ptr <Beta> (new Beta(++n, std::shared_ptr<Alpha> (new Alpha(++n))))));
+    std::shared_ptr<Alpha> B(new Alpha(std::shared_ptr <Beta> (new Beta( std::shared_ptr<Alpha> (new Alpha())))));
     B->delInstance();
-    B->setInstance(std::shared_ptr<Green> (new Green(++n) ));
+    B->setInstance(std::shared_ptr<Green> (new Green() ));
 
-    std::shared_ptr<Alpha> A(new Alpha(++n,std::shared_ptr <Red> (new Red(++n, std::shared_ptr <Beta> (new Beta(++n, std::shared_ptr<Green> (new Green(++n))))))));
+    std::shared_ptr<Alpha> A(new Alpha(std::shared_ptr <Red> (new Red( std::shared_ptr <Beta> (new Beta( std::shared_ptr<Green> (new Green())))))));
 }
 int main() {
     testSomeObjects();
