@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <vector>
 
 double S = 0;
 
@@ -7,12 +8,12 @@ class Base{
 
 protected:
     int N;
-    std::shared_ptr<Base> sample;
     int counter(){
         static int n = 0;
         return ++n;
     }
 public:
+    std::shared_ptr<Base> sample;
     Base() = default;
     virtual void setN(int n){}
     virtual void setInstance(std::shared_ptr<Base> example){}
@@ -85,7 +86,7 @@ public:
     }
     ~Red(){
         std::cout << "Red " << N << '\n';
-        S = S + (double) N/2;
+        S = S + N*1.0/2;
     }
 };
 
@@ -97,7 +98,7 @@ public:
     }
     ~Green(){
         std::cout << "Green " << N << '\n';
-        S = S - (double) N/2 - 17;
+        S = S - N*1.0/2 - 17;
     }
 };
 
@@ -108,8 +109,42 @@ void testSomeObjects(){
 
     std::shared_ptr<Alpha> A(new Alpha(std::shared_ptr <Red> (new Red( std::shared_ptr <Beta> (new Beta( std::shared_ptr<Green> (new Green())))))));
 }
+double countRes (const Base& A, double Scopy){
+    if (typeid(A) == typeid(Base))
+        return 2*Scopy + A.getN() - 37;
+    if (typeid(A) == typeid(Alpha))
+        return 2*(Scopy - A.getN()) + A.getN() - 37;
+    if (typeid(A) == typeid(Beta))
+        return 2*(Scopy + 3*A.getN() + 37)+ A.getN() - 37;
+    if (typeid(A) == typeid(Red))
+        return 2*((Scopy + A.getN() *1.0/2) - A.getN())+ A.getN() - 37;
+    return 2*((Scopy - A.getN()*1.0/2 - 17) - A.getN())+ A.getN() - 37;
+
+}
+
+
+
+double predictRes(const std::vector< std::shared_ptr<Base> > &vec){
+    double Scopy = S;
+    for (const auto& i:vec){
+        std::shared_ptr<Base> cur = i;
+        while (cur->sample){
+            Scopy = countRes(*cur,Scopy);
+            cur = cur->sample;
+        }
+    }
+    return Scopy;
+}
+
+void testPredictor(){
+    std::vector<std::shared_ptr<Base> > vec = {std::shared_ptr<Alpha> (new Alpha(std::shared_ptr <Beta> (new Beta( std::shared_ptr<Green> (new Green()))))),
+                                               std::shared_ptr<Red> (new Red(std::shared_ptr <Green> (new Green( std::shared_ptr<Alpha> (new Alpha())))))};
+    std::cout << "Predicted value: " << predictRes(vec);
+}
 int main() {
     testSomeObjects();
+
+    testPredictor();
     std::cout << "Got value: " << S;
     return 0;
 }
