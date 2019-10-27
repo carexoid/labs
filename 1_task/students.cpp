@@ -5,6 +5,7 @@
 
 #include "students.h"
 #include "tasks.h"
+#include "model.h"
 
 Student::Student() : points(0),strategy(0){}
 Student::Student(const std::vector<std::pair<std::string, int> > &baseKnowledges, int baseStrategy)
@@ -114,4 +115,24 @@ int Student::chooseIndOfTask(const std::vector<Task>& tasks, const std::vector<b
 
 void Student::addPoints(int newPoints) {
     points += newPoints;
+}
+
+std::vector <std::pair < std::string, int> > Student::getKnowledges() const {
+    return knowledges;
+}
+
+std::ostream& operator<<(std::ostream &out, const Student &A) {
+    std::vector <std::pair < std::string, int> > knows = A.getKnowledges();
+    out << "\nPoints got: " << A.getPoints() << "\nStrategy of choosing: " << A.getStrategy();
+    out << "\nKnowledges:\n";
+    for (const auto& i: knows)
+        out << "    Subject: " << i.first <<" Knowledge out of 100: " << i.second << '\n';
+    return  out;
+}
+
+Student& Student::operator=(const Student &A) {
+    points = A.points;
+    knowledges = A.knowledges;
+    strategy = A.strategy;
+    return *this;
 }

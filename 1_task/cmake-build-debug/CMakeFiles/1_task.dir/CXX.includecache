@@ -6,11 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.cpp
-students.h
-/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.h
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/model.cpp
+model.h
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/model.h
 tasks.h
 /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.h
+students.h
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.h
+
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/model.h
+vector
+-
+string
+-
+random
+-
+ctime
+-
 
 /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.h
 vector
@@ -18,6 +30,8 @@ vector
 string
 -
 algorithm
+-
+iostream
 -
 
 /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.h

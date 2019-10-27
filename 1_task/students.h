@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iostream>
 
 class Task;
 
@@ -23,12 +24,18 @@ public:
     int getLevel (const std::string& subj) const;
     int getPoints() const;
     int getStrategy() const;
+    std::vector< std::pair <std::string, int> > getKnowledges() const;
 
     void setStrategy (int newStrategy);
     void updKnowledges (const Task& taskDone);
     int chooseIndOfTask (const std::vector<Task> &tasks, const std::vector<bool>& done);
     void addPoints (int newPoints);
+
+    Student& operator=(const Student& A);
+
 };
+
+std::ostream& operator<< (std::ostream& out, const Student& A);
 
 
 #endif //INC_1_TASK_STUDENTS_H

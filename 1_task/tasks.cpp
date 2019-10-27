@@ -4,8 +4,10 @@
 
 #include "tasks.h"
 #include "students.h"
+#include "model.h"
 
-Task::Task(std::vector<std::string> &disciplines, int points, int typeOfTask) : knowledges(disciplines), maxPoints(points), type(typeOfTask) {
+Task::Task(const std::vector<std::string> &disciplines, int points, int typeOfTask, int comple)
+: knowledges(disciplines), maxPoints(points), type(typeOfTask), complexity(comple) {
 }
 
 int Task::pointsFor(const Student &student) const {
@@ -76,4 +78,21 @@ bool Task::hasKnowledge(const std::string& searched) const {
         if (searched == i)
             return 1;
     return 0;
+}
+
+std::ostream& operator<< (std::ostream& out, const Task& A){
+    std::vector <std::string>  req = A.getKnowledges();
+    out << "\nPoints maximum: " << A.getMaxPonts() << "\nComplexity: " << A.getComlexity();
+    out << "\nSubjects required:\n";
+    for (const auto& i: req)
+        out << "    Subject: " << i << '\n';
+    return  out;
+}
+
+Task& Task::operator=(const Task &A) {
+    maxPoints = A.maxPoints;
+    complexity = A.complexity;
+    type = A.type;
+    knowledges = A.knowledges;
+    return *this;
 }
