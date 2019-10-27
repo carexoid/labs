@@ -157,47 +157,98 @@ bool allTasksDone( const std::vector< std::vector<bool> >& doneStTsk){
     return 1;
 }
 
-//void Model::startLimitLessSim() {
-//    std::vector<int> daysToWork(students.size()); //indexes equel to indexes of students in vector of students
-//    std::vector<int> taskInProcess (students.size());// has index of task being done
-//    for (auto &i: taskInProcess)
-//        i = -1;
-//    std::vector<int> pointsGot(students.size()); //indexes equel to indexes of students in vector of students
-//    std::vector< std::vector<bool> > doneStTsk(students.size());
-//
-//    for (auto& i: doneStTsk){
-//        i.resize(tasks.size());
-//    }
-//    std::cout << "******************Tasks in simulation*********************************";
-//    for (const auto& i:tasks)
-//        std::cout << i;
-//    std::cout << "******************Students before simulation*********************************";
-//    for (const auto& i:students)
-//        std::cout << i;
-//    int sum = 0;
-//    while(!allTasksDone(doneStTsk)){
-//        for (int i = 0 ; i < students.size(); i++){
-//            if (!daysToWork[i]){
-//                if (taskInProcess[i] != -1){
-//                    doneStTsk[i][taskInProcess[i]] = 1;
-//                    int gotPoints = tasks[taskInProcess[i]].pointsFor(students[i]);
-//                    sum += gotPoints;
-//                    students[i].addPoints(gotPoints);
-//                    students[i].updKnowledges(tasks[taskInProcess[i]]);
-//                }
-//                int choosenTask = students[i].chooseIndOfTask(tasks,doneStTsk[i]);
-//                daysToWork[i] = tasks[choosenTask].daysFor(students[i]);
-//                taskInProcess[i] = choosenTask;
-//            }
-//        }  //tasks chosen
-//        for (int i = 0; i < students.size(); i++){
-//            daysToWork[i]--;
-//        }
-//
-//    }  //simulation ended
-//    std::cout << "******************Students after simulation*********************************";
-//    for (const auto& i:students)
-//        std::cout << i;
-//
-//}
-//
+bool cmpForReslists(const std::pair<Task, int>& a, const std::pair<Task,int>& b){
+    return a.second > b.second;
+}
+
+void Model::startLimitLessSim() {
+    std::vector< std::pair< Task,int> > list1,list2,list3;
+    for (const auto& i: tasks){
+        list1.emplace_back(i,0);
+        list2.emplace_back(i,0);
+        list3.emplace_back(i,i.getComlexity());
+    }
+    std::vector<int> daysToWork(students.size()); //indexes equel to indexes of students in vector of students
+    std::vector<int> taskInProcess (students.size());// has index of task being done
+    for (auto &i: taskInProcess)
+        i = -1;
+    std::vector<int> pointsGot(students.size()); //indexes equel to indexes of students in vector of students
+    std::vector< std::vector<bool> > doneStTsk(students.size());
+
+    for (auto& i: doneStTsk){
+        i.resize(tasks.size());
+    }
+    std::cout << "******************Tasks in simulation*********************************";
+    for (const auto& i:tasks)
+        std::cout << i;
+    std::cout << "******************Students before simulation*********************************";
+    for (const auto& i:students)
+        std::cout << i;
+    int sum = 0;
+    std::vector< int > currentKn (students.size());
+    for (int i = 0; i <currentKn.size();i++){
+        for (const auto& j:subjects)
+            currentKn[i] += students[i].getLevel(j);
+    }
+    while(!allTasksDone(doneStTsk)){
+        for (int i = 0 ; i < students.size(); i++){
+            if (!daysToWork[i]){
+                if (taskInProcess[i] != -1){
+                    doneStTsk[i][taskInProcess[i]] = 1;
+                    int gotPoints = tasks[taskInProcess[i]].pointsFor(students[i]);
+                    sum += gotPoints;
+                    students[i].addPoints(gotPoints);
+                    students[i].updKnowledges(tasks[taskInProcess[i]]);
+                    int newKn = 0;
+                    for (const auto &it:subjects)
+                        newKn += students[i].getLevel(it);
+                    list2[taskInProcess[i]].second += (newKn - currentKn[i]);
+                    currentKn[i] = newKn;
+                }
+                int choosenTask = students[i].chooseIndOfTask(tasks,doneStTsk[i]);
+                daysToWork[i] = tasks[choosenTask].daysFor(students[i]);
+                taskInProcess[i] = choosenTask;
+                list1[choosenTask].second += daysToWork[i];
+            }
+        }  //tasks chosen
+        for (int i = 0; i < students.size(); i++){
+            daysToWork[i]--;
+        }
+
+    }  //simulation ended
+    std::cout << "******************Students after simulation*********************************";
+    for (const auto& i:students)
+        std::cout << i;
+
+    std::sort(list1.begin(),list1.end(),&cmpForReslists);
+    std::sort(list2.begin(),list2.end(),&cmpForReslists);
+    std::sort(list3.begin(),list3.end(),&cmpForReslists);
+
+    std::vector<Task > resList;
+    for (int i = 0; i < list1.size(); i++){
+        if ( std::find(resList.begin(), resList.end(), list1[i].first) == resList.end() )
+            resList.push_back(list1[i].first);
+        if ( std::find(resList.begin(), resList.end(), list2[i].first) == resList.end() )
+            resList.push_back(list2[i].first);
+        if ( std::find(resList.begin(), resList.end(), list3[i].first) == resList.end() )
+            resList.push_back(list3[i].first);
+    }
+    std::cout << "**********************************First list******************************";
+    for (int i = 0; i < list1.size(); i++){
+        std::cout << list1[i].first << "Elapsed time in days: " << list1[i].second << "\n\n\n";
+    }
+    std::cout << "**********************************Second list******************************";
+    for (int i = 0; i < list1.size(); i++){
+        std::cout << list2[i].first << "Gained level of knowledges: " << list2[i].second << "\n\n\n";
+    }
+    std::cout << "**********************************Third list******************************";
+    for (int i = 0; i < list1.size(); i++){
+        std::cout << list3[i].first <<"Complexity: " << list3[i].second << "\n\n\n";
+    }
+    std::cout << "**********************************United list******************************";
+    for (int i = 0; i < resList.size(); i++){
+        std::cout << resList[i] << "\n\n\n";
+    }
+
+}
+

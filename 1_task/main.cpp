@@ -11,5 +11,8 @@ int main() {
     model.reset();
     std::cout << "\n\n\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Running points limited simulation>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n\n\n";
     model.startPointLimSim(200);
+    model.reset();
+    std::cout << "\n\n\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Running simulation for getting sorted lists of tasks>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n\n\n";
+    model.startLimitLessSim();
     return 0;
 }

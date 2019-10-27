@@ -96,3 +96,7 @@ Task& Task::operator=(const Task &A) {
     knowledges = A.knowledges;
     return *this;
 }
+
+bool operator==(const Task& A, const Task& B){
+    return A.getKnowledges() == B.getKnowledges() && A.getComlexity()== B.getComlexity() && A.getMaxPonts() == B.getMaxPonts();
+}

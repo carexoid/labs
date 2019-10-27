@@ -35,7 +35,6 @@ public:
 };
 
 std::ostream& operator<< (std::ostream& out, const Task& A);
-
-
+bool operator== (const Task& A, const Task& B);
 
 #endif //INC_1_TASK_TASKS_H
