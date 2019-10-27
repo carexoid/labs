@@ -11,7 +11,9 @@ protected:
 public:
     Base() = default;
     virtual void setN(int n){}
-    virtual void setSample(std::shared_ptr<Base> example){}
+    virtual void setInstance(std::shared_ptr<Base> example){}
+    virtual int getN() const{}
+    virtual void delInstance(){}
     virtual ~Base(){
         std::cout << "Base " << N << '\n';
         S = 2*S + N - 37;
@@ -30,8 +32,14 @@ public:
     void setN (int n) override {
         N = n;
     }
-    void setSample (std::shared_ptr<Base> example) override {
+    void setInstance (std::shared_ptr<Base> example) override {
         sample = example;
+    }
+    int getN () const override {
+        return N;
+    }
+    void delInstance(){
+        sample.reset();
     }
     ~Alpha(){
         std::cout << "Alpha " << N << '\n';
@@ -50,8 +58,14 @@ public:
     void setN (int n) override {
         N = n;
     }
-    void setSample (std::shared_ptr<Base> example) override {
+    void setInstance (std::shared_ptr<Base> example) override {
         sample = example;
+    }
+    int getN () const override {
+        return N;
+    }
+    void delInstance(){
+        sample.reset();
     }
     ~Beta(){
         std::cout << "Beta " << N << '\n';
@@ -83,11 +97,16 @@ public:
     }
 };
 
-int main() {
+void testSomeObjects(){
     int n = 0;
-    if (true){
-        Alpha A(n++,std::shared_ptr <Red> (new Red(n++, std::shared_ptr <Beta> (new Beta(n++, std::shared_ptr<Green> (new Green(n++)))))));
-    }
-    std::cout << S;
+    std::shared_ptr<Alpha> B(new Alpha(++n,std::shared_ptr <Beta> (new Beta(++n, std::shared_ptr<Alpha> (new Alpha(++n))))));
+    B->delInstance();
+    B->setInstance(std::shared_ptr<Green> (new Green(++n) ));
+
+    std::shared_ptr<Alpha> A(new Alpha(++n,std::shared_ptr <Red> (new Red(++n, std::shared_ptr <Beta> (new Beta(++n, std::shared_ptr<Green> (new Green(++n))))))));
+}
+int main() {
+    testSomeObjects();
+    std::cout << "Got value: " << S;
     return 0;
 }
