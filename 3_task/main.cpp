@@ -142,6 +142,8 @@ void testPredictor(){
                                                std::shared_ptr<Red> (new Red(std::shared_ptr <Green> (new Green( std::shared_ptr<Alpha> (new Alpha())))))};
     std::cout << "Predicted value after deleting vector: " << predictRes(vec) << '\n';
 }
+
+
 int main() {
     testSomeObjects();
     std::cout << "Got value after running testSomeObjects: " << S << '\n';

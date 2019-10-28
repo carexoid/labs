@@ -149,17 +149,20 @@ void Model::startPointLimSim(int points) {
         std::cout << i;
 }
 
-bool allTasksDone( const std::vector< std::vector<bool> >& doneStTsk){
-    for (auto i: doneStTsk)
-        for (const auto& j:i)
-            if (!j)
-                return 0;
-    return 1;
+namespace LimLessSim{
+    bool allTasksDone( const std::vector< std::vector<bool> >& doneStTsk){
+        for (auto i: doneStTsk)
+            for (const auto& j:i)
+                if (!j)
+                    return 0;
+        return 1;
+    }
+
+    bool cmpForReslists(const std::pair<Task, int>& a, const std::pair<Task,int>& b){
+        return a.second > b.second;
+    }
 }
 
-bool cmpForReslists(const std::pair<Task, int>& a, const std::pair<Task,int>& b){
-    return a.second > b.second;
-}
 
 void Model::startLimitLessSim() {
     std::vector< std::pair< Task,int> > list1,list2,list3;
@@ -190,7 +193,7 @@ void Model::startLimitLessSim() {
         for (const auto& j:subjects)
             currentKn[i] += students[i].getLevel(j);
     }
-    while(!allTasksDone(doneStTsk)){
+    while(!LimLessSim::allTasksDone(doneStTsk)){
         for (int i = 0 ; i < students.size(); i++){
             if (!daysToWork[i]){
                 if (taskInProcess[i] != -1){
@@ -220,9 +223,9 @@ void Model::startLimitLessSim() {
     for (const auto& i:students)
         std::cout << i;
 
-    std::sort(list1.begin(),list1.end(),&cmpForReslists);
-    std::sort(list2.begin(),list2.end(),&cmpForReslists);
-    std::sort(list3.begin(),list3.end(),&cmpForReslists);
+    std::sort(list1.begin(),list1.end(),&LimLessSim::cmpForReslists);
+    std::sort(list2.begin(),list2.end(),&LimLessSim::cmpForReslists);
+    std::sort(list3.begin(),list3.end(),&LimLessSim::cmpForReslists);
 
     std::vector<Task > resList;
     for (int i = 0; i < list1.size(); i++){
