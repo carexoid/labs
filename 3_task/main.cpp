@@ -4,21 +4,23 @@
 
 double S = 0;
 
+
 class Base{
 
 protected:
     int N;
-    int counter(){
+    int& counter() const{
         static int n = 0;
-        return ++n;
+        return n;
     }
 public:
     std::shared_ptr<Base> sample;
     Base() = default;
-    virtual void setN(int n){}
-    virtual void setInstance(std::shared_ptr<Base> example){}
-    virtual int getN() const{}
-    virtual void delInstance(){}
+    virtual void setN(int n) = 0;
+    virtual void setInstance(std::shared_ptr<Base> example) = 0;
+    virtual int getN() const = 0;
+    virtual void delInstance() = 0;
+    virtual void resetCounter() = 0;
     virtual ~Base(){
         std::cout << "Base " << N << '\n';
         S = 2*S + N - 37;
@@ -28,10 +30,10 @@ public:
 class Alpha : public Base{
 public:
     Alpha (){
-        N = counter();
+        N = ++counter();
     }
     Alpha (std::shared_ptr<Base> example){
-        N = counter();
+        N = ++counter();
         sample = example;
     }
     void setN (int n) override {
@@ -43,10 +45,13 @@ public:
     int getN () const override {
         return N;
     }
-    void delInstance(){
+    void delInstance() override {
         sample.reset();
     }
-    ~Alpha(){
+    void resetCounter() override {
+        counter() = 0;
+    }
+    ~Alpha() override {
         std::cout << "Alpha " << N << '\n';
         S = S - N;
     }
@@ -54,10 +59,10 @@ public:
 class Beta: public Base{
 public:
     Beta (){
-        N = counter();
+        N = ++counter();
     }
     Beta ( std::shared_ptr<Base> example){
-        N = counter();
+        N = ++counter();
         sample = example;
     }
     void setN (int n) override {
@@ -69,10 +74,13 @@ public:
     int getN () const override {
         return N;
     }
-    void delInstance(){
+    void delInstance()override {
         sample.reset();
     }
-    ~Beta(){
+    void resetCounter() override {
+        counter() = 0;
+    }
+    ~Beta() override{
         std::cout << "Beta " << N << '\n';
         S = S + 3*N + 37;
     }
@@ -108,6 +116,7 @@ void testSomeObjects(){
     B->setInstance(std::shared_ptr<Green> (new Green() ));
 
     std::shared_ptr<Alpha> A(new Alpha(std::shared_ptr <Red> (new Red( std::shared_ptr <Beta> (new Beta( std::shared_ptr<Green> (new Green())))))));
+    A->resetCounter();
 }
 double countRes (const Base& A, double Scopy){
     if (typeid(A) == typeid(Base))
@@ -149,5 +158,7 @@ int main() {
     std::cout << "Got value after running testSomeObjects: " << S << '\n';
     testPredictor();
     std::cout << "Got value after deleting vector: " << S;
+
+
     return 0;
 }
