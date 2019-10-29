@@ -21,8 +21,9 @@ public:
     virtual int getN() const = 0;
     virtual void delInstance() = 0;
     virtual void resetCounter() = 0;
+    virtual void decreaseCounter() = 0;
     virtual ~Base(){
-        std::cout << "Base " << N << '\n';
+     //   std::cout << "Base " << N << '\n';
         S = 2*S + N - 37;
     }
 };
@@ -51,8 +52,11 @@ public:
     void resetCounter() override {
         counter() = 0;
     }
+    void decreaseCounter() override {
+        --counter();
+    }
     ~Alpha() override {
-        std::cout << "Alpha " << N << '\n';
+       // std::cout << "Alpha " << N << '\n';
         S = S - N;
     }
 };
@@ -80,8 +84,11 @@ public:
     void resetCounter() override {
         counter() = 0;
     }
+    void decreaseCounter() override {
+        --counter();
+    }
     ~Beta() override{
-        std::cout << "Beta " << N << '\n';
+       // std::cout << "Beta " << N << '\n';
         S = S + 3*N + 37;
     }
 };
@@ -93,7 +100,7 @@ public:
     Red( std::shared_ptr<Base> example) : Alpha(example) {
     }
     ~Red(){
-        std::cout << "Red " << N << '\n';
+       // std::cout << "Red " << N << '\n';
         S = S + N*1.0/2;
     }
 };
@@ -105,7 +112,7 @@ public:
     Green( std::shared_ptr<Base> example) : Alpha( example) {
     }
     ~Green(){
-        std::cout << "Green " << N << '\n';
+        //std::cout << "Green " << N << '\n';
         S = S - N*1.0/2 - 17;
     }
 };
@@ -133,15 +140,15 @@ double countRes (const Base& A, double Scopy){
 
 
 
-double predictRes(const std::vector< std::shared_ptr<Base> > &vec){
+double predictRes(const std::vector< std::shared_ptr<Base> > &vec) {
     double Scopy = S;
-    for (const auto& i:vec){
+    for (const auto &i:vec) {
         std::shared_ptr<Base> cur = i;
-        while (cur->sample){
-            Scopy = countRes(*cur,Scopy);
+        while (cur->sample) {
+            Scopy = countRes(*cur, Scopy);
             cur = cur->sample;
         }
-        Scopy = countRes(*cur,Scopy);
+        Scopy = countRes(*cur, Scopy);
     }
     return Scopy;
 }
@@ -150,14 +157,47 @@ void testPredictor(){
     std::vector<std::shared_ptr<Base> > vec = {std::shared_ptr<Alpha> (new Alpha(std::shared_ptr <Beta> (new Beta( std::shared_ptr<Green> (new Green()))))),
                                                std::shared_ptr<Red> (new Red(std::shared_ptr <Green> (new Green( std::shared_ptr<Alpha> (new Alpha())))))};
     std::cout << "Predicted value after deleting vector: " << predictRes(vec) << '\n';
+    vec[0]->resetCounter();
 }
 
+void combinations(int M,  std::vector<std::shared_ptr<Base> >& B){
+    if(!M){
+        S = 0;
+        std::cout << predictRes(B) <<' ';
+    }
+    else{
+        B.push_back(std::shared_ptr<Base> (new Alpha()));
+        combinations(M-1,B);
+        B[B.size()-1]->decreaseCounter();
+        B.pop_back();
+        B.push_back(std::shared_ptr<Base> (new Beta()));
+        combinations(M-1,B);
+        B[B.size()-1]->decreaseCounter();
+        B.pop_back();
+        B.push_back(std::shared_ptr<Base> (new Red()));
+        combinations(M-1,B);
+        B[B.size()-1]->decreaseCounter();
+        B.pop_back();
+        B.push_back(std::shared_ptr<Base> (new Green()));
+        combinations(M-1,B);
+        B[B.size()-1]->decreaseCounter();
+        B.pop_back();
+
+    }
+}// for independent examples that created in order same to position
+
+void testCombinator(int M){
+    std::vector<std::shared_ptr<Base> > vec;
+    combinations(M,vec);
+}
 
 int main() {
     testSomeObjects();
     std::cout << "Got value after running testSomeObjects: " << S << '\n';
     testPredictor();
     std::cout << "Got value after deleting vector: " << S;
+    std::cout << "\nPredicting all variant of vector of independent examples that created in order same to order in vector ( first element created first): ";
+    testCombinator(6);
 
 
     return 0;
