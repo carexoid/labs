@@ -1,0 +1,67 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+#include <QInputDialog>
+#include <QFileDialog>
+#include <QDebug>
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_actionNew_chat_triggered()
+{
+    QString chatName = QInputDialog::getText(this, tr("Find user"), tr("User name"));
+    if(chatName != "")
+        ui->chatLists->addItem(chatName);
+    chats.push_back(QVector<QListWidgetItem>());
+
+}
+
+void MainWindow::on_sendingButton_clicked()
+{
+    QString msgText = "Me: " + ui->msgEdit->toPlainText();
+    if (msgText != "Me: ")
+        ui->msgList->addItem(msgText);
+    ui->msgEdit->clear();
+    addToChatHistory(QListWidgetItem(msgText),ui->chatLists->currentRow());
+}
+
+void MainWindow::on_sendPhotoButton_clicked()
+{
+    QString msgText = ui->msgEdit->toPlainText();
+    QString picPath = QFileDialog::getOpenFileName(this, tr("Open image"), QString(), tr("Image Files (*.png *.jpg *.bmp)"));
+    QListWidgetItem *myPic = new QListWidgetItem(QIcon(picPath),"Me: " + msgText);
+    myPic->setText("Me: " + msgText);
+    //myPic->setSizeHint(QSize(300,300));
+    if (picPath != "")
+        ui->msgList->addItem(myPic);
+    ui->msgEdit->clear();
+    addToChatHistory(*myPic,ui->chatLists->currentRow());
+}
+
+void MainWindow::on_chatLists_currentRowChanged(int currentRow)
+{
+    qDebug() << currentRow;
+    setNewMsgList(currentRow);
+}
+
+void MainWindow::setNewMsgList(int row){
+    ui->msgList->clear();
+    for(const auto& item: chats[row]){
+        qDebug() << &item;
+        ui->msgList->addItem(new QListWidgetItem(item));
+    }
+}
+
+void MainWindow::addToChatHistory(QListWidgetItem item,int row){
+    chats[row].push_back(item);
+}
