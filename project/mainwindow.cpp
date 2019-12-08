@@ -42,7 +42,7 @@ void MainWindow::on_actionNew_chat_triggered()
     if(chatName != "")
         ui->chatLists->addItem(chatName);
     chats.push_back(QVector<QListWidgetItem>());
-
+    ui->chatLists->setCurrentRow(chats.size() - 1);
 }
 
 void MainWindow::on_sendingButton_clicked()

@@ -29,7 +29,7 @@ void Client::onSokReadyRead(){
     in >> command;
 
     switch (command){
-        case 1:{
+        case Client::FindUserCom:{
             QString userName;
             in >> userName;
             qDebug() << userName;
@@ -38,6 +38,7 @@ void Client::onSokReadyRead(){
                 qDebug() << userName;
             }
          break;
+
 
 
 
