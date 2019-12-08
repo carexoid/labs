@@ -1,8 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "client.h"
+
 #include <QMainWindow>
 #include<QListWidgetItem>
+#include <QTcpServer>
 
 namespace Ui {
 class MainWindow;
@@ -30,8 +33,12 @@ private:
 
     QVector<QVector<QListWidgetItem> > chats;
 
+    Client *myClient;
+
     void setNewMsgList(int row);
+
     void addToChatHistory(QListWidgetItem  item, int row);
+
 
 };
 

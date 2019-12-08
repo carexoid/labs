@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-11-23T16:37:23
+# Project created by QtCreator 2019-12-08T14:36:15
 #
 #-------------------------------------------------
 
@@ -9,7 +9,7 @@ QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = project
+TARGET = progectServer
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -27,11 +27,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        client.cpp \
+    client.cpp \
 
 HEADERS += \
         mainwindow.h \
-        client.h \
+    client.h \
 
 FORMS += \
         mainwindow.ui

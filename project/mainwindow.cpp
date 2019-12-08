@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "client.h"
 #include "ui_mainwindow.h"
 
 #include <QInputDialog>
@@ -10,6 +11,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    myClient = new Client();
+    while (myClient->_name == "")
+        myClient->_name = QInputDialog::getText(this, tr("Enter as"), tr("User name"));
+    myClient->_sok->connectToHost(QHostAddress::LocalHost,7000);
+
 }
 
 MainWindow::~MainWindow()
