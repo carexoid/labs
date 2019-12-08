@@ -5,24 +5,28 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QInputDialog>
+#include <QString>
 
 class Client : public QObject{
-     friend class MainWindow;
+    Q_OBJECT
+    friend class MainWindow;
 public:
     explicit Client(QObject* parent = 0);
-    const quint8 AutReqCom = 0;
-    const quint8 FindUserCom = 1;
-    const quint8 NewTxtMsgCom = 2;
-private slots:
+    static const quint8 AutReqCom = 0;
+    static const quint8 FindUserCom = 1;
+    static const quint8 NewTxtMsgCom = 2;
+public slots:
     void onSokReadyRead();
+
+    void onSokConnected();
 
     void onSokDisconnected();
 
 private:
     QTcpSocket *_sok;
     QString _name;
-
-
+    quint16 _blockSize;
+    QList<Client*> *_allClients;
 
 
 };

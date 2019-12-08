@@ -28,6 +28,7 @@ private slots:
 
     void on_chatLists_currentRowChanged(int currentRow);
 
+
 private:
     Ui::MainWindow *ui;
 

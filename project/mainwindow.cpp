@@ -32,6 +32,13 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNew_chat_triggered()
 {
     QString chatName = QInputDialog::getText(this, tr("Find user"), tr("User name"));
+    QByteArray block;
+    QDataStream out(&block, QIODevice::WriteOnly);
+    out << (quint16)0 << Client::FindUserCom << chatName;
+    out.device()->seek(0);
+    out << (quint16)(block.size() - sizeof(quint16));
+    myClient->_sok->write(block);
+    qDebug() << myClient->_sok->peerPort();
     if(chatName != "")
         ui->chatLists->addItem(chatName);
     chats.push_back(QVector<QListWidgetItem>());
@@ -78,3 +85,4 @@ void MainWindow::setNewMsgList(int row){
 void MainWindow::addToChatHistory(QListWidgetItem item,int row){
     chats[row].push_back(item);
 }
+
