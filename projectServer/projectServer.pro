@@ -1,15 +1,16 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-11-23T16:37:23
+# Project created by QtCreator 2019-12-08T17:36:04
 #
 #-------------------------------------------------
 
 QT       += core gui
 QT       += network
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = project
+TARGET = projectServer
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
