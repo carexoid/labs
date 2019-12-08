@@ -9,13 +9,13 @@
 class Client : public QObject{
      friend class MainWindow;
 public:
-    Client();
+    explicit Client(QObject* parent = 0);
     const quint8 AutReqCom = 0;
     const quint8 FindUserCom = 1;
     const quint8 NewTxtMsgCom = 2;
 private slots:
     void onSokReadyRead();
-    void onSokConnected();
+
     void onSokDisconnected();
 
 private:

@@ -19,12 +19,13 @@ void MainWindow::onNewConnection(){
     newClient->_sok = _server.nextPendingConnection();
     _clients.append(newClient);
     QTextStream txtStream(newClient->_sok);
-//    while(!newClient->_sok->canReadLine())
-//        newClient->_sok->waitForReadyRead((-1));
-//    newClient->_name = txtStream.readLine();
-    qDebug() << txtStream.readLine();
+    if (newClient->_sok->waitForReadyRead((-1))){
+         newClient->_name = txtStream.readLine();
+    }
+
+   // qDebug() << txtStream.readLine();
     for (int j = 0; j < _clients.length(); ++j){
-        qDebug() << _clients.at(j)->_sok->peerPort();
+        qDebug() << _clients.at(j)->_name;
     }
 }
 

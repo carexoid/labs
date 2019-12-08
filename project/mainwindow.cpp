@@ -16,6 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
     while (myClient->_name == "")
         myClient->_name = QInputDialog::getText(this, tr("Enter as"), tr("User name"));
     myClient->_sok->connectToHost(QHostAddress::LocalHost,7000);
+    if(myClient->_sok->waitForConnected(-1))
+          qDebug() << "connected";
+    qDebug() << myClient->_name;
+    QTextStream txtStream(myClient->_sok);
+    txtStream << myClient->_name;
 
 }
 
@@ -53,6 +58,7 @@ void MainWindow::on_sendPhotoButton_clicked()
         ui->msgList->addItem(myPic);
     ui->msgEdit->clear();
     addToChatHistory(*myPic,ui->chatLists->currentRow());
+
 }
 
 void MainWindow::on_chatLists_currentRowChanged(int currentRow)
