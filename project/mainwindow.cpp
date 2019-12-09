@@ -19,9 +19,12 @@ MainWindow::MainWindow(QWidget *parent) :
         myClient->_name = QInputDialog::getText(this, tr("Enter as"), tr("User name"));
     myClient->_sok->connectToHost(QHostAddress::LocalHost,7000);
     myClient->_mainWin = this;
+    ui->myNick->setText("My nick: " + myClient->_name);
     if(myClient->_sok->waitForConnected(-1))
           qDebug() << "connected";
+
     qDebug() << myClient->_name;
+
 //    QTextStream txtStream(myClient->_sok);
 //    txtStream << myClient->_name;
 

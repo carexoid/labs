@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>760</width>
-    <height>515</height>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@
       <x>10</x>
       <y>0</y>
       <width>191</width>
-      <height>451</height>
+      <height>411</height>
      </rect>
     </property>
    </widget>
@@ -98,6 +98,19 @@
       <normaloff>../../../../Downloads/camera_icon.png</normaloff>../../../../Downloads/camera_icon.png</iconset>
     </property>
    </widget>
+   <widget class="QLabel" name="myNick">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>419</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -115,14 +128,6 @@
     <addaction name="actionNew_chat"/>
    </widget>
    <addaction name="menuMenu"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew_chat">
