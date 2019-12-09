@@ -52,11 +52,23 @@ void MainWindow::on_actionNew_chat_triggered()
 
 void MainWindow::on_sendingButton_clicked()
 {
-    QString msgText = "Me: " + ui->msgEdit->toPlainText();
-    if (msgText != "Me: ")
-        ui->msgList->addItem(msgText);
-    ui->msgEdit->clear();
-    addToChatHistory(QListWidgetItem(msgText),ui->chatLists->currentRow());
+    QString msgText = ui->msgEdit->toPlainText();
+    QString myMsg = "Me: " + msgText;
+    QString rcvr = ui->chatLists->currentItem()->text();
+    if (msgText != ""){
+        ui->msgList->addItem(myMsg);
+        ui->msgEdit->clear();
+        addToChatHistory(QListWidgetItem(myMsg),ui->chatLists->currentRow());
+        QByteArray block;
+        QDataStream out(&block, QIODevice::WriteOnly);
+        out << (quint16)0 << (quint8)Client::NewTxtMsgCom << rcvr + ": " + msgText;
+        out.device()->seek(0);
+        out << (quint16)(block.size() - sizeof(quint16));
+        myClient->_sok->write(block);
+        qDebug() << myClient->_sok->peerPort();
+        //if(chatName != "")
+        //addNewChat(chatName);
+    }
 }
 
 void MainWindow::on_sendPhotoButton_clicked()
@@ -92,6 +104,7 @@ void MainWindow::addToChatHistory(QListWidgetItem item,int row){
 }
 
 void MainWindow::addNewChat(QString chatName){
+    _chatsNum++;
     ui->chatLists->addItem(chatName);
     chats.push_back(QVector<QListWidgetItem>());
     ui->chatLists->setCurrentRow(chats.size() - 1);
@@ -100,6 +113,19 @@ void MainWindow::addNewChat(QString chatName){
 void MainWindow::canAddNewChat(QString chatName, bool flag){
     if (flag)
         addNewChat(chatName);
-
 }
 
+void MainWindow::receiveTxtMsg(QString fullMsg){
+    QString rcvr;
+    int i = 0;
+    while (fullMsg[i] != ':')
+        rcvr += fullMsg[i++];
+    qDebug() << rcvr;
+    for (int i = 0; i < _chatsNum; i++)
+        if (ui->chatLists->item(i)->text() == rcvr){
+            qDebug() << rcvr;
+            if (ui->chatLists->currentRow() == i)
+                ui->msgList->addItem(fullMsg);
+            addToChatHistory(QListWidgetItem(fullMsg),i);
+        }
+}

@@ -37,7 +37,15 @@ void Client::onSokReadyRead(){
             if (userName != "")
                 _mainWin->canAddNewChat(userName,true);
         }
-         break;
+        break;
+        case Client::NewTxtMsgCom:{
+            QString fullMsg;
+            in >> fullMsg;
+            qDebug() << fullMsg;
+            _mainWin->receiveTxtMsg(fullMsg);
+
+        }
+        break;
 
 
 

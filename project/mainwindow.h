@@ -23,6 +23,8 @@ public:
 
     void canAddNewChat(QString chatName, bool flag);
 
+    void receiveTxtMsg(QString fullMsg);
+
 private slots:
     void on_actionNew_chat_triggered();
 
@@ -35,6 +37,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    int _chatsNum = 0;
 
     QVector<QVector<QListWidgetItem> > chats;
 

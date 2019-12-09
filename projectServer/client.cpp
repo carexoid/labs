@@ -58,14 +58,32 @@ void Client::onSokReadyRead(){
                 out << (quint16)(blockOut.size() - sizeof(quint16));
                 _sok->write(blockOut);
             }
-
-
-
-
-
+        }
+        break;
+        case Client::NewTxtMsgCom:{
+            QString fullMsg;
+            in >> fullMsg;
+            qDebug() << fullMsg;
+            QString rcvr;
+            int i = 0;
+            while(fullMsg[i] != ':'){
+                rcvr += fullMsg[i];
+                fullMsg.remove(i,1);
+            }
+            fullMsg = _name + fullMsg;
+            qDebug() << rcvr;
+            for (int i = 0; i < _allClients->size() ; i++)
+            if (_allClients->at(i)->_name == rcvr){
+                QByteArray blockOut;
+                QDataStream out(&blockOut, QIODevice::WriteOnly);
+                out << (quint16)0 << (quint8)Client::NewTxtMsgCom << fullMsg;
+                out.device()->seek(0);
+                out << (quint16)(blockOut.size() - sizeof(quint16));
+                _allClients->at(i)->_sok->write(blockOut);
+            }
 
         }
-         break;
+        break;
     }
 }
 
