@@ -12,6 +12,7 @@ class Client : public QObject{
     friend class MainWindow;
 public:
     explicit Client(QObject* parent = 0);
+    explicit Client(QTcpSocket* sok, QObject* parent = 0);
     static const quint8 AutReqCom = 0;
     static const quint8 FindUserCom = 1;
     static const quint8 NewTxtMsgCom = 2;

@@ -9,6 +9,14 @@ Client::Client(QObject* parent) : QObject(parent){
     //connect(_sok, SIGNAL(error(QAbstractSocket::SocketError)),this, SLOT(onSokDisplayError(QAbstractSocket::SocketError)));
 }
 
+Client::Client(QTcpSocket* sok, QObject* parent) : QObject(parent){
+    _sok = sok;
+
+    qDebug() << connect(_sok, SIGNAL(readyRead()), this, SLOT(onSokReadyRead()));
+    connect(_sok, SIGNAL(connected()), this, SLOT(onSokConnected()));
+    connect(_sok, SIGNAL(disconnected()), this, SLOT(onSokDisconnected()));
+}
+
 
 
 void Client::onSokReadyRead(){
@@ -50,4 +58,6 @@ void Client::onSokConnected(){
     qDebug() << "connected";
 }
 
-void Client::onSokDisconnected(){}
+void Client::onSokDisconnected(){
+    qDebug() << "disconected";
+}
