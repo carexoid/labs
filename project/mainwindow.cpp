@@ -6,6 +6,8 @@
 #include <QFileDialog>
 #include <QDebug>
 
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,11 +18,12 @@ MainWindow::MainWindow(QWidget *parent) :
     while (myClient->_name == "")
         myClient->_name = QInputDialog::getText(this, tr("Enter as"), tr("User name"));
     myClient->_sok->connectToHost(QHostAddress::LocalHost,7000);
+    myClient->_mainWin = this;
     if(myClient->_sok->waitForConnected(-1))
           qDebug() << "connected";
     qDebug() << myClient->_name;
-    QTextStream txtStream(myClient->_sok);
-    txtStream << myClient->_name;
+//    QTextStream txtStream(myClient->_sok);
+//    txtStream << myClient->_name;
 
 }
 
@@ -32,17 +35,19 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNew_chat_triggered()
 {
     QString chatName = QInputDialog::getText(this, tr("Find user"), tr("User name"));
-    QByteArray block;
-    QDataStream out(&block, QIODevice::WriteOnly);
-    out << (quint16)0 << Client::FindUserCom << chatName;
-    out.device()->seek(0);
-    out << (quint16)(block.size() - sizeof(quint16));
-    myClient->_sok->write(block);
-    qDebug() << myClient->_sok->peerPort();
-    if(chatName != "")
-        ui->chatLists->addItem(chatName);
-    chats.push_back(QVector<QListWidgetItem>());
-    ui->chatLists->setCurrentRow(chats.size() - 1);
+    if(chatName != ""){
+        QByteArray block;
+        QDataStream out(&block, QIODevice::WriteOnly);
+        out << (quint16)0 << (quint8)Client::FindUserCom << chatName;
+        out.device()->seek(0);
+        out << (quint16)(block.size() - sizeof(quint16));
+        myClient->_sok->write(block);
+        qDebug() << myClient->_sok->peerPort();
+        //if(chatName != "")
+        //addNewChat(chatName);
+
+    }
+
 }
 
 void MainWindow::on_sendingButton_clicked()
@@ -84,5 +89,17 @@ void MainWindow::setNewMsgList(int row){
 
 void MainWindow::addToChatHistory(QListWidgetItem item,int row){
     chats[row].push_back(item);
+}
+
+void MainWindow::addNewChat(QString chatName){
+    ui->chatLists->addItem(chatName);
+    chats.push_back(QVector<QListWidgetItem>());
+    ui->chatLists->setCurrentRow(chats.size() - 1);
+}
+
+void MainWindow::canAddNewChat(QString chatName, bool flag){
+    if (flag)
+        addNewChat(chatName);
+
 }
 

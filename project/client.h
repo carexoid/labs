@@ -6,6 +6,10 @@
 #include <QTcpSocket>
 #include <QInputDialog>
 
+#include "mainwindow.h"
+
+class MainWindow;
+
 class Client : public QObject{
     Q_OBJECT
     friend class MainWindow;
@@ -20,9 +24,11 @@ private slots:
     void onSokDisconnected();
 
 private:
+    MainWindow* _mainWin;
+
     QTcpSocket *_sok;
     QString _name;
-
+    quint16 _blockSize;
 
 
 

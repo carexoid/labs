@@ -7,6 +7,8 @@
 #include<QListWidgetItem>
 #include <QTcpServer>
 
+class Client;
+
 namespace Ui {
 class MainWindow;
 }
@@ -18,6 +20,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    void canAddNewChat(QString chatName, bool flag);
 
 private slots:
     void on_actionNew_chat_triggered();
@@ -39,6 +43,8 @@ private:
     void setNewMsgList(int row);
 
     void addToChatHistory(QListWidgetItem  item, int row);
+
+    void addNewChat(QString chatName);
 
 
 };

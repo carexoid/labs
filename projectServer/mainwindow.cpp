@@ -19,15 +19,15 @@ void MainWindow::onNewConnection(){
     Client *newClient = new Client(newSok);
     newClient->_allClients = &_clients;
     _clients.append(newClient);
-    QTextStream txtStream(newClient->_sok);
-    if (newClient->_sok->waitForReadyRead((-1))){
-         newClient->_name = txtStream.readLine();
-    }
+//    QTextStream txtStream(newClient->_sok);
+//    if (newClient->_sok->waitForReadyRead((-1))){
+//         newClient->_name = txtStream.readLine();
+//    }
 
-   // qDebug() << txtStream.readLine();
-    for (int j = 0; j < _clients.length(); ++j){
-        qDebug() << _clients.at(j)->_name;
-    }
+//   // qDebug() << txtStream.readLine();
+//    for (int j = 0; j < _clients.length(); ++j){
+//        qDebug() << _clients.at(j)->_name;
+//    }
 }
 
 MainWindow::~MainWindow()

@@ -2,6 +2,7 @@
 
 Client::Client(QObject* parent) : QObject(parent){
     _sok = new QTcpSocket(this);
+    _blockSize = 0;
 
     qDebug() << connect(_sok, SIGNAL(readyRead()), this, SLOT(onSokReadyRead()));
     connect(_sok, SIGNAL(connected()), this, SLOT(onSokConnected()));
@@ -11,7 +12,7 @@ Client::Client(QObject* parent) : QObject(parent){
 
 Client::Client(QTcpSocket* sok, QObject* parent) : QObject(parent){
     _sok = sok;
-
+    _blockSize = 0;
     qDebug() << connect(_sok, SIGNAL(readyRead()), this, SLOT(onSokReadyRead()));
     connect(_sok, SIGNAL(connected()), this, SLOT(onSokConnected()));
     connect(_sok, SIGNAL(disconnected()), this, SLOT(onSokDisconnected()));
@@ -37,20 +38,34 @@ void Client::onSokReadyRead(){
     in >> command;
 
     switch (command){
+        case Client::AutReqCom:{
+            QString clientName;
+            in >> clientName;
+            qDebug() << clientName;
+            _name = clientName;
+        }
+        break;
         case Client::FindUserCom:{
             QString userName;
             in >> userName;
             qDebug() << userName;
             for (int i = 0; i < _allClients->size() ; i++)
             if (_allClients->at(i)->_name == userName){
-                qDebug() << userName;
+                QByteArray blockOut;
+                QDataStream out(&blockOut, QIODevice::WriteOnly);
+                out << (quint16)0 << (quint8)Client::FindUserCom << userName;
+                out.device()->seek(0);
+                out << (quint16)(blockOut.size() - sizeof(quint16));
+                _sok->write(blockOut);
             }
-         break;
+
+
 
 
 
 
         }
+         break;
     }
 }
 
