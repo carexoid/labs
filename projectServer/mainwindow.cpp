@@ -30,6 +30,14 @@ void MainWindow::onNewConnection(){
 //    }
 }
 
+void MainWindow::delClient(QString name){
+    for (int i = 0; i < _clients.length(); i++){
+        if (_clients.at(i)->_name == name){
+            _clients.erase(_clients.begin() + i);
+            break;
+        }
+    }
+}
 MainWindow::~MainWindow()
 {
     delete ui;
