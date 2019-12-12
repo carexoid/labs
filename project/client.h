@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QInputDialog>
+#include <QListWidgetItem>
 
 #include "mainwindow.h"
 
@@ -18,6 +19,7 @@ public:
     static const quint8 AutReqCom = 0;
     static const quint8 FindUserCom = 1;
     static const quint8 NewTxtMsgCom = 2;
+    static const quint8 NewImgMsgCom = 3;
 private slots:
     void onSokReadyRead();
     void onSokConnected();

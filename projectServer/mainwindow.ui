@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>189</width>
+    <width>146</width>
     <height>39</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>10</y>
       <width>151</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>Isn`t listening</string>
     </property>
    </widget>
   </widget>
@@ -33,7 +33,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>189</width>
+     <width>146</width>
      <height>23</height>
     </rect>
    </property>

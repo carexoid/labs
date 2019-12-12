@@ -46,6 +46,18 @@ void Client::onSokReadyRead(){
 
         }
         break;
+        case Client::NewImgMsgCom:{
+            QListWidgetItem *myPic;
+            qDebug() << "smth";
+            in >> *myPic;
+            qDebug() << myPic->text();
+            _mainWin->receiveImg(myPic);
+
+
+
+        }
+        break;
+
 
 
 

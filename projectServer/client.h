@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QInputDialog>
 #include <QString>
+#include <QListWidgetItem>
 
 class Client : public QObject{
     Q_OBJECT
@@ -16,6 +17,7 @@ public:
     static const quint8 AutReqCom = 0;
     static const quint8 FindUserCom = 1;
     static const quint8 NewTxtMsgCom = 2;
+    static const quint8 NewImgMsgCom = 3;
 public slots:
     void onSokReadyRead();
 

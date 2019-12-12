@@ -25,6 +25,8 @@ public:
 
     void receiveTxtMsg(QString fullMsg);
 
+    void receiveImg(QListWidgetItem* myPic);
+
 private slots:
     void on_actionNew_chat_triggered();
 
