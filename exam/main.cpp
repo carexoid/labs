@@ -9,7 +9,6 @@ int main(int argc, char *argv[])
 {
 
     testingFunctions();
-    std::cout << "Let's start" << std::endl;
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

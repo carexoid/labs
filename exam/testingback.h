@@ -19,10 +19,12 @@ void testingFunctions(){
                                 new Book4("Trilling book 2", 6, 9, 2018, "drama", 890,{{"Ron", 58},{"John", 42}}),
                                 new Book5("UpAndDown", 10, 10, 2018, "comedy", 870, parts)};
     auto res1 = getAuthorsOfThisBook(books[2], authors);
+    std::cout << "Authors of Thrilling book and pages, that they've written:\n";
     for (const auto& i:res1)
         std::cout << i.first << ":" << i.second << '\n';
     auto res2 = getNumOfBooksAndPages(*authors[0],books,{3, 1, 2009},{7, 11, 2019});
-        std::cout << res2.first << "::" << res2.second << std::endl;
+    std::cout << "Number of books and pages, written between 3.1.2009 and 7.11.2019 by John:\n";
+    std::cout << res2.first << "::" << res2.second << std::endl;
 
 }
 #endif // TESTINGBACK_H
