@@ -18,6 +18,7 @@
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
@@ -38,6 +39,9 @@ public:
     QLabel *BookInfoLabel;
     QTextBrowser *AuthorInfo;
     QLabel *AuthorInfoLabel;
+    QPushButton *reseter;
+    QLabel *booksStatus;
+    QLabel *authorsStatus;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -46,7 +50,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(860, 641);
+        MainWindow->resize(855, 658);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         bookList = new QListView(centralWidget);
@@ -76,10 +80,21 @@ public:
         AuthorInfoLabel = new QLabel(centralWidget);
         AuthorInfoLabel->setObjectName(QStringLiteral("AuthorInfoLabel"));
         AuthorInfoLabel->setGeometry(QRect(450, 390, 101, 18));
+        reseter = new QPushButton(centralWidget);
+        reseter->setObjectName(QStringLiteral("reseter"));
+        reseter->setGeometry(QRect(310, 270, 251, 26));
+        booksStatus = new QLabel(centralWidget);
+        booksStatus->setObjectName(QStringLiteral("booksStatus"));
+        booksStatus->setGeometry(QRect(90, 20, 211, 18));
+        booksStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        authorsStatus = new QLabel(centralWidget);
+        authorsStatus->setObjectName(QStringLiteral("authorsStatus"));
+        authorsStatus->setGeometry(QRect(640, 20, 201, 18));
+        authorsStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 860, 23));
+        menuBar->setGeometry(QRect(0, 0, 855, 23));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -100,6 +115,9 @@ public:
         AuhtorLabel->setText(QApplication::translate("MainWindow", "Authors", Q_NULLPTR));
         BookInfoLabel->setText(QApplication::translate("MainWindow", "Book info", Q_NULLPTR));
         AuthorInfoLabel->setText(QApplication::translate("MainWindow", "Author info", Q_NULLPTR));
+        reseter->setText(QApplication::translate("MainWindow", "Reset filters", Q_NULLPTR));
+        booksStatus->setText(QString());
+        authorsStatus->setText(QString());
     } // retranslateUi
 
 };

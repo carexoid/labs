@@ -17,22 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
              new Book4("Trilling book 2", 6, 9, 2018, "drama", 890,{{"Ron", 58},{"John", 42}}),
              new Book5("UpAndDown", 10, 10, 2018, "comedy", 870, parts)};
     bookModel = new QStringListModel(this);
-    QStringList bookList;
-    for (const auto& book: books)
-        bookList << QString::fromStdString(book->getName());
-    authorModel = new QStringListModel(this);
-    QStringList authorList;
-    for (const auto& author: authors)
-        authorList << QString::fromStdString(author->getName());
-    bookModel->setStringList(bookList);
-    authorModel->setStringList(authorList);
 
-    ui->bookList->setModel(bookModel);
-    ui->authorList->setModel(authorModel);
-    ui->bookList->setCurrentIndex(bookModel->index(0));
-    ui->authorList->setCurrentIndex(authorModel->index(0));
-    on_bookList_clicked(bookModel->index(0));
-    on_authorList_clicked(authorModel->index(0));
+    authorModel = new QStringListModel(this);
+
+    resetFilters();
 }
 
 MainWindow::~MainWindow(){
@@ -97,21 +85,18 @@ void MainWindow::on_bookList_doubleClicked(const QModelIndex &index){
 }
 
 void MainWindow::sortAuthorsBy(Book *book){
-    int counter = 0;
+    QStringList authorList;
     for (int i = 0; i < authors.size(); i++)
         if (book->contains(*authors[i])){
-            std::swap(authors[i], authors[counter]);
-            counter++;
+           authorList << QString::fromStdString(authors[i]->getName());
         }
-    QStringList authorList;
-    for (const auto& author: authors)
-        authorList << QString::fromStdString(author->getName());
+
     authorModel->setStringList(authorList);
 
     ui->authorList->setModel(authorModel);
     ui->authorList->setCurrentIndex(authorModel->index(0));
 
-
+    ui->authorsStatus->setText("(of " + QString::fromStdString(book->getName()) + ")");
 }
 
 void MainWindow::on_authorList_doubleClicked(const QModelIndex &index){
@@ -121,18 +106,41 @@ void MainWindow::on_authorList_doubleClicked(const QModelIndex &index){
 }
 
 void MainWindow::sortBooksBy(Author *author){
-    int counter = 0;
+    QStringList bookList;
     for (int i = 0; i < books.size(); i++)
         if (books[i]->contains(*author)){
-            std::swap(books[i], books[counter]);
-            counter++;
+             bookList << QString::fromStdString(books[i]->getName());
         }
-    QStringList bookList;
-    for (const auto& book: books)
-        bookList << QString::fromStdString(book->getName());
-    authorModel = new QStringListModel(this);
-
     bookModel->setStringList(bookList);
     ui->bookList->setModel(bookModel);
     ui->bookList->setCurrentIndex(bookModel->index(0));
+
+    ui->booksStatus->setText("(with author " + QString::fromStdString(author->getName()) + ")");
+}
+
+
+void MainWindow::on_reseter_clicked()
+{
+    resetFilters();
+}
+
+void MainWindow::resetFilters(){
+    QStringList bookList;
+    for (const auto& book: books)
+        bookList << QString::fromStdString(book->getName());
+    QStringList authorList;
+    for (const auto& author: authors)
+        authorList << QString::fromStdString(author->getName());
+    bookModel->setStringList(bookList);
+    authorModel->setStringList(authorList);
+
+    ui->bookList->setModel(bookModel);
+    ui->authorList->setModel(authorModel);
+    ui->bookList->setCurrentIndex(bookModel->index(0));
+    ui->authorList->setCurrentIndex(authorModel->index(0));
+    on_bookList_clicked(bookModel->index(0));
+    on_authorList_clicked(authorModel->index(0));
+
+    ui->booksStatus->setText("(all)");
+    ui->authorsStatus->setText("(all)");
 }

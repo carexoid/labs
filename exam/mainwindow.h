@@ -32,6 +32,8 @@ private slots:
 
     void on_authorList_doubleClicked(const QModelIndex &index);
 
+    void on_reseter_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::vector<Book*> books;
@@ -44,6 +46,8 @@ private:
     void sortAuthorsBy(Book* book);
 
     void sortBooksBy(Author* author);
+
+    void resetFilters();
 };
 
 #endif // MAINWINDOW_H
