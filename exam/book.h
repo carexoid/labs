@@ -36,6 +36,7 @@ public:
     int getType() const;
     int getSize() const;
     virtual std::vector<AuthorData> getAuthors() = 0;
+    virtual bool contains(const Author& author) = 0;
 
 protected:
     int _type;
@@ -52,6 +53,7 @@ public:
     Book1(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::string& author);
     ~Book1() override;
     std::vector<AuthorData> getAuthors() override;
+    bool contains(const Author& author) override;
 
 private:
     std::string _author;
@@ -62,6 +64,7 @@ public:
     Book2(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::vector<std::string>& authors);
     ~Book2() override;
     std::vector<AuthorData> getAuthors() override;
+    bool contains(const Author& author) override;
 
 private:
     std::vector<std::string> _authors;
@@ -73,6 +76,7 @@ public:
     Book3(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::vector<std::pair<std::string, int> >& authors);
     ~Book3() override;
     std::vector<AuthorData> getAuthors() override;
+    bool contains(const Author& author) override;
 
 private:
     std::vector<std::pair<std::string, int> > _authors;
@@ -84,6 +88,7 @@ public:
     Book4(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::vector<std::pair<std::string, int> >& authors);
     ~Book4() override;
     std::vector<AuthorData> getAuthors() override;
+    bool contains(const Author& author) override;
 
 private:
     std::vector<std::pair<std::string, int> > _authors;
@@ -95,6 +100,7 @@ public:
     Book5(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::vector<Book*>& parts);
     ~Book5() override;
     std::vector<AuthorData> getAuthors() override;
+    bool contains(const Author& author) override;
 private:
     std::vector<Book*> _parts;
 };

@@ -47,6 +47,13 @@ std::vector<AuthorData> Book1::getAuthors(){
     return {{_author, this, _size}};
 }
 
+bool Book1::contains(const Author& author){
+    for (const auto& i:author.getNicks())
+        if (_author == i)
+            return true;
+    return false;
+}
+
 Book1::~Book1(){}
 
 Book2::Book2(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::vector<std::string> &authors)
@@ -61,6 +68,14 @@ std::vector<AuthorData> Book2::getAuthors(){
     return res;
 }
 
+bool Book2::contains(const Author &author){
+    for (const auto& i: author.getNicks())
+        for (const auto& j: _authors)
+            if (i == j)
+                return true;
+    return false;
+}
+
 Book2::~Book2(){}
 
 Book3::Book3(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::vector<std::pair<std::string, int> > &authors)
@@ -73,6 +88,14 @@ std::vector<AuthorData> Book3::getAuthors(){
     for (int i = 0; i < (int)_authors.size(); i++)
         res.push_back({_authors[i].first, this, _size * _authors[i].second / 100});
     return res;
+}
+
+bool Book3::contains(const Author &author){
+    for (const auto& i: author.getNicks())
+        for (const auto& j: _authors)
+            if (i == j.first)
+                return true;
+    return false;
 }
 
 Book3::~Book3(){}
@@ -90,6 +113,14 @@ std::vector<AuthorData> Book4::getAuthors(){
     return res;
 }
 
+bool Book4::contains(const Author &author){
+    for (const auto& i: author.getNicks())
+        for (const auto& j: _authors)
+            if (i == j.first)
+                return true;
+    return false;
+}
+
 Book4::~Book4(){}
 
 Book5::Book5(const std::string &name, int day, int month, int year, const std::string &genre, int size, const std::vector<Book *> &parts)
@@ -104,6 +135,13 @@ std::vector<AuthorData> Book5::getAuthors(){
         res.insert(res.end(), currentPartRes.begin(), currentPartRes.end());
     }
     return res;
+}
+
+bool Book5::contains(const Author &author){
+    for (const auto &i: _parts)
+        if(i->contains(author))
+            return true;
+    return false;
 }
 
 Book5::~Book5(){}
