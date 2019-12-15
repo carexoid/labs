@@ -135,7 +135,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../exam/exam.pro ../exam/mainwindow.h \
 		../exam/author.h \
-		../exam/book.h ../exam/main.cpp \
+		../exam/book.h \
+		../exam/testingback.h ../exam/main.cpp \
 		../exam/mainwindow.cpp \
 		../exam/author.cpp \
 		../exam/book.cpp
@@ -322,7 +323,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../exam/mainwindow.h ../exam/author.h ../exam/book.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../exam/mainwindow.h ../exam/author.h ../exam/book.h ../exam/testingback.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../exam/main.cpp ../exam/mainwindow.cpp ../exam/author.cpp ../exam/book.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../exam/mainwindow.ui $(DISTDIR)/
 
@@ -393,7 +394,8 @@ mainwindow.o: ../exam/mainwindow.cpp ../exam/mainwindow.h \
 author.o: ../exam/author.cpp ../exam/author.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o author.o ../exam/author.cpp
 
-book.o: ../exam/book.cpp ../exam/book.h
+book.o: ../exam/book.cpp ../exam/book.h \
+		../exam/author.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o book.o ../exam/book.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

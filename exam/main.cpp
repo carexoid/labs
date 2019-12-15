@@ -1,10 +1,15 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <iostream>
+#include"book.h"
+#include"author.h"
+#include"testingback.h"
 
 int main(int argc, char *argv[])
 {
-    std::cout << "Let's start" << std::endl;
+
+    testingFunctions();
+    std::cout << "Let's start, blyat, suka< govno" << std::endl;
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

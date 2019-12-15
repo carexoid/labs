@@ -32,7 +32,8 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     author.h \
-    book.h
+    book.h \
+    testingback.h
 
 FORMS += \
         mainwindow.ui
