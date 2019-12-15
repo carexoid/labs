@@ -86,7 +86,7 @@ Book4::Book4(const std::string &name, int day, int month, int year, const std::s
 std::vector<AuthorData> Book4::getAuthors(){
     std::vector<AuthorData> res;
     for (int i = 0; i < (int)_authors.size(); i++)
-        res.push_back({_authors[i].first, this, _size * _authors[i].second / 100});
+        res.push_back({_authors[i].first, this, _size * _authors[i].second / 200});
     return res;
 }
 

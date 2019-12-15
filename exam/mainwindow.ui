@@ -34,7 +34,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="AuthorInBook">
     <property name="geometry">
      <rect>
       <x>305</x>
@@ -75,7 +75,7 @@
      <rect>
       <x>30</x>
       <y>410</y>
-      <width>271</width>
+      <width>391</width>
       <height>161</height>
      </rect>
     </property>
@@ -96,9 +96,9 @@
    <widget class="QTextBrowser" name="AuthorInfo">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>450</x>
       <y>410</y>
-      <width>271</width>
+      <width>391</width>
       <height>161</height>
      </rect>
     </property>
@@ -106,7 +106,7 @@
    <widget class="QLabel" name="AuthorInfoLabel">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>450</x>
       <y>390</y>
       <width>101</width>
       <height>18</height>

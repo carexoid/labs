@@ -5,6 +5,7 @@
 #include <QStringList>
 #include <QStringListModel>
 #include <vector>
+#include <string>
 
 #include "book.h"
 #include "author.h"
@@ -25,12 +26,16 @@ public:
 private slots:
     void on_bookList_clicked(const QModelIndex &index);
 
+    void on_authorList_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     std::vector<Book*> books;
     std::vector<Author*> authors;
     QStringListModel *bookModel;
     QStringListModel *authorModel;
+
+    void setAuthorInBookInfo(int authorRow, int bookRow);
 
 };
 
