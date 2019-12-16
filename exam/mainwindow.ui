@@ -14,153 +14,82 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QListView" name="bookList">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>271</width>
-      <height>341</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QListView" name="authorList">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>40</y>
-      <width>271</width>
-      <height>341</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="AuthorInBook">
-    <property name="geometry">
-     <rect>
-      <x>305</x>
-      <y>160</y>
-      <width>261</width>
-      <height>101</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="BooksLabel">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>75</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Books</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="AuhtorLabel">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>20</y>
-      <width>75</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Authors</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="BookInfo">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>410</y>
-      <width>391</width>
-      <height>161</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="BookInfoLabel">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>390</y>
-      <width>75</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Book info</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="AuthorInfo">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>410</y>
-      <width>391</width>
-      <height>161</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="AuthorInfoLabel">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>390</y>
-      <width>101</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Author info</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="reseter">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>270</y>
-      <width>251</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset filters</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="booksStatus">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>20</y>
-      <width>211</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="authorsStatus">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>20</y>
-      <width>201</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="BooksLabel">
+        <property name="text">
+         <string>Books</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="booksStatus">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="AuhtorLabel">
+        <property name="text">
+         <string>Authors</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLabel" name="authorsStatus">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" rowspan="2" colspan="2">
+       <widget class="QListView" name="bookList"/>
+      </item>
+      <item row="1" column="2" colspan="2">
+       <widget class="QTextBrowser" name="AuthorInBook"/>
+      </item>
+      <item row="1" column="4" rowspan="2" colspan="2">
+       <widget class="QListView" name="authorList"/>
+      </item>
+      <item row="2" column="2" colspan="2">
+       <widget class="QPushButton" name="reseter">
+        <property name="text">
+         <string>Reset filters</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QLabel" name="BookInfoLabel">
+        <property name="text">
+         <string>Book info</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="AuthorInfoLabel">
+        <property name="text">
+         <string>Author info</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="3">
+       <widget class="QTextBrowser" name="BookInfo"/>
+      </item>
+      <item row="4" column="3" colspan="3">
+       <widget class="QTextBrowser" name="AuthorInfo"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

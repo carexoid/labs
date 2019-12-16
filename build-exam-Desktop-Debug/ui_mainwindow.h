@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListView>
@@ -30,18 +31,20 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QListView *bookList;
-    QListView *authorList;
-    QTextBrowser *AuthorInBook;
+    QGridLayout *gridLayout_2;
+    QGridLayout *gridLayout;
     QLabel *BooksLabel;
-    QLabel *AuhtorLabel;
-    QTextBrowser *BookInfo;
-    QLabel *BookInfoLabel;
-    QTextBrowser *AuthorInfo;
-    QLabel *AuthorInfoLabel;
-    QPushButton *reseter;
     QLabel *booksStatus;
+    QLabel *AuhtorLabel;
     QLabel *authorsStatus;
+    QListView *bookList;
+    QTextBrowser *AuthorInBook;
+    QListView *authorList;
+    QPushButton *reseter;
+    QLabel *BookInfoLabel;
+    QLabel *AuthorInfoLabel;
+    QTextBrowser *BookInfo;
+    QTextBrowser *AuthorInfo;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -53,44 +56,78 @@ public:
         MainWindow->resize(855, 658);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        bookList = new QListView(centralWidget);
-        bookList->setObjectName(QStringLiteral("bookList"));
-        bookList->setGeometry(QRect(30, 40, 271, 341));
-        authorList = new QListView(centralWidget);
-        authorList->setObjectName(QStringLiteral("authorList"));
-        authorList->setGeometry(QRect(570, 40, 271, 341));
-        AuthorInBook = new QTextBrowser(centralWidget);
-        AuthorInBook->setObjectName(QStringLiteral("AuthorInBook"));
-        AuthorInBook->setGeometry(QRect(305, 160, 261, 101));
+        gridLayout_2 = new QGridLayout(centralWidget);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(6);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         BooksLabel = new QLabel(centralWidget);
         BooksLabel->setObjectName(QStringLiteral("BooksLabel"));
-        BooksLabel->setGeometry(QRect(30, 20, 75, 18));
-        AuhtorLabel = new QLabel(centralWidget);
-        AuhtorLabel->setObjectName(QStringLiteral("AuhtorLabel"));
-        AuhtorLabel->setGeometry(QRect(570, 20, 75, 18));
-        BookInfo = new QTextBrowser(centralWidget);
-        BookInfo->setObjectName(QStringLiteral("BookInfo"));
-        BookInfo->setGeometry(QRect(30, 410, 391, 161));
-        BookInfoLabel = new QLabel(centralWidget);
-        BookInfoLabel->setObjectName(QStringLiteral("BookInfoLabel"));
-        BookInfoLabel->setGeometry(QRect(30, 390, 75, 18));
-        AuthorInfo = new QTextBrowser(centralWidget);
-        AuthorInfo->setObjectName(QStringLiteral("AuthorInfo"));
-        AuthorInfo->setGeometry(QRect(450, 410, 391, 161));
-        AuthorInfoLabel = new QLabel(centralWidget);
-        AuthorInfoLabel->setObjectName(QStringLiteral("AuthorInfoLabel"));
-        AuthorInfoLabel->setGeometry(QRect(450, 390, 101, 18));
-        reseter = new QPushButton(centralWidget);
-        reseter->setObjectName(QStringLiteral("reseter"));
-        reseter->setGeometry(QRect(310, 270, 251, 26));
+
+        gridLayout->addWidget(BooksLabel, 0, 0, 1, 1);
+
         booksStatus = new QLabel(centralWidget);
         booksStatus->setObjectName(QStringLiteral("booksStatus"));
-        booksStatus->setGeometry(QRect(90, 20, 211, 18));
         booksStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout->addWidget(booksStatus, 0, 1, 1, 1);
+
+        AuhtorLabel = new QLabel(centralWidget);
+        AuhtorLabel->setObjectName(QStringLiteral("AuhtorLabel"));
+
+        gridLayout->addWidget(AuhtorLabel, 0, 4, 1, 1);
+
         authorsStatus = new QLabel(centralWidget);
         authorsStatus->setObjectName(QStringLiteral("authorsStatus"));
-        authorsStatus->setGeometry(QRect(640, 20, 201, 18));
         authorsStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout->addWidget(authorsStatus, 0, 5, 1, 1);
+
+        bookList = new QListView(centralWidget);
+        bookList->setObjectName(QStringLiteral("bookList"));
+
+        gridLayout->addWidget(bookList, 1, 0, 2, 2);
+
+        AuthorInBook = new QTextBrowser(centralWidget);
+        AuthorInBook->setObjectName(QStringLiteral("AuthorInBook"));
+
+        gridLayout->addWidget(AuthorInBook, 1, 2, 1, 2);
+
+        authorList = new QListView(centralWidget);
+        authorList->setObjectName(QStringLiteral("authorList"));
+
+        gridLayout->addWidget(authorList, 1, 4, 2, 2);
+
+        reseter = new QPushButton(centralWidget);
+        reseter->setObjectName(QStringLiteral("reseter"));
+
+        gridLayout->addWidget(reseter, 2, 2, 1, 2);
+
+        BookInfoLabel = new QLabel(centralWidget);
+        BookInfoLabel->setObjectName(QStringLiteral("BookInfoLabel"));
+
+        gridLayout->addWidget(BookInfoLabel, 3, 0, 1, 2);
+
+        AuthorInfoLabel = new QLabel(centralWidget);
+        AuthorInfoLabel->setObjectName(QStringLiteral("AuthorInfoLabel"));
+
+        gridLayout->addWidget(AuthorInfoLabel, 3, 3, 1, 1);
+
+        BookInfo = new QTextBrowser(centralWidget);
+        BookInfo->setObjectName(QStringLiteral("BookInfo"));
+
+        gridLayout->addWidget(BookInfo, 4, 0, 1, 3);
+
+        AuthorInfo = new QTextBrowser(centralWidget);
+        AuthorInfo->setObjectName(QStringLiteral("AuthorInfo"));
+
+        gridLayout->addWidget(AuthorInfo, 4, 3, 1, 3);
+
+
+        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -112,12 +149,12 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         BooksLabel->setText(QApplication::translate("MainWindow", "Books", Q_NULLPTR));
+        booksStatus->setText(QString());
         AuhtorLabel->setText(QApplication::translate("MainWindow", "Authors", Q_NULLPTR));
+        authorsStatus->setText(QString());
+        reseter->setText(QApplication::translate("MainWindow", "Reset filters", Q_NULLPTR));
         BookInfoLabel->setText(QApplication::translate("MainWindow", "Book info", Q_NULLPTR));
         AuthorInfoLabel->setText(QApplication::translate("MainWindow", "Author info", Q_NULLPTR));
-        reseter->setText(QApplication::translate("MainWindow", "Reset filters", Q_NULLPTR));
-        booksStatus->setText(QString());
-        authorsStatus->setText(QString());
     } // retranslateUi
 
 };
