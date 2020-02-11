@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/1_task.dir/main.cpp.o CMakeFiles/1_task.dir/tasks.cpp.o CMakeFiles/1_task.dir/students.cpp.o CMakeFiles/1_task.dir/model.cpp.o  -o 1_task 
