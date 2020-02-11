@@ -35,19 +35,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/88/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/100/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/88/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/100/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task
+CMAKE_SOURCE_DIR = /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug
+CMAKE_BINARY_DIR = /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ preinstall:
 CMakeFiles/1_task.dir/all:
 	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/depend
 	$(MAKE) -f CMakeFiles/1_task.dir/build.make CMakeFiles/1_task.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target 1_task"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target 1_task"
 .PHONY : CMakeFiles/1_task.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/1_task.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/1_task.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/1_task.dir/rule
 
 # Convenience name for target.

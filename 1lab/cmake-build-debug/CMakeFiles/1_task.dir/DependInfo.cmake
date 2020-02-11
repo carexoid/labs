@@ -4,10 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/main.cpp" "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/1_task.dir/main.cpp.o"
-  "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/model.cpp" "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/1_task.dir/model.cpp.o"
-  "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.cpp" "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/1_task.dir/students.cpp.o"
-  "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.cpp" "/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/1_task.dir/tasks.cpp.o"
+  "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/main.cpp" "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/1_task.dir/main.cpp.o"
+  "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/model.cpp" "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/1_task.dir/model.cpp.o"
+  "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/students.cpp" "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/1_task.dir/students.cpp.o"
+  "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tasks.cpp" "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/1_task.dir/tasks.cpp.o"
+  "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tests.cpp" "/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/1_task.dir/tests.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

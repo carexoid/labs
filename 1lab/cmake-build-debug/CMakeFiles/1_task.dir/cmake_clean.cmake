@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/1_task.dir/model.cpp.o"
   "CMakeFiles/1_task.dir/students.cpp.o"
   "CMakeFiles/1_task.dir/tasks.cpp.o"
+  "CMakeFiles/1_task.dir/tests.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

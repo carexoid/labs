@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/88/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/100/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/88/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/100/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task
+CMAKE_SOURCE_DIR = /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug
+CMAKE_BINARY_DIR = /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/1_task.dir/depend.make
@@ -59,62 +59,76 @@ include CMakeFiles/1_task.dir/flags.make
 
 CMakeFiles/1_task.dir/main.cpp.o: CMakeFiles/1_task.dir/flags.make
 CMakeFiles/1_task.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/1_task.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/main.cpp.o -c /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/1_task.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/main.cpp.o -c /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/main.cpp
 
 CMakeFiles/1_task.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/1_task.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/main.cpp > CMakeFiles/1_task.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/main.cpp > CMakeFiles/1_task.dir/main.cpp.i
 
 CMakeFiles/1_task.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/1_task.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/main.cpp -o CMakeFiles/1_task.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/main.cpp -o CMakeFiles/1_task.dir/main.cpp.s
 
 CMakeFiles/1_task.dir/tasks.cpp.o: CMakeFiles/1_task.dir/flags.make
 CMakeFiles/1_task.dir/tasks.cpp.o: ../tasks.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/1_task.dir/tasks.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/tasks.cpp.o -c /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/1_task.dir/tasks.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/tasks.cpp.o -c /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tasks.cpp
 
 CMakeFiles/1_task.dir/tasks.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/1_task.dir/tasks.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.cpp > CMakeFiles/1_task.dir/tasks.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tasks.cpp > CMakeFiles/1_task.dir/tasks.cpp.i
 
 CMakeFiles/1_task.dir/tasks.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/1_task.dir/tasks.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/tasks.cpp -o CMakeFiles/1_task.dir/tasks.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tasks.cpp -o CMakeFiles/1_task.dir/tasks.cpp.s
 
 CMakeFiles/1_task.dir/students.cpp.o: CMakeFiles/1_task.dir/flags.make
 CMakeFiles/1_task.dir/students.cpp.o: ../students.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/1_task.dir/students.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/students.cpp.o -c /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/1_task.dir/students.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/students.cpp.o -c /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/students.cpp
 
 CMakeFiles/1_task.dir/students.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/1_task.dir/students.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.cpp > CMakeFiles/1_task.dir/students.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/students.cpp > CMakeFiles/1_task.dir/students.cpp.i
 
 CMakeFiles/1_task.dir/students.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/1_task.dir/students.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/students.cpp -o CMakeFiles/1_task.dir/students.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/students.cpp -o CMakeFiles/1_task.dir/students.cpp.s
 
 CMakeFiles/1_task.dir/model.cpp.o: CMakeFiles/1_task.dir/flags.make
 CMakeFiles/1_task.dir/model.cpp.o: ../model.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/1_task.dir/model.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/model.cpp.o -c /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/model.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/1_task.dir/model.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/model.cpp.o -c /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/model.cpp
 
 CMakeFiles/1_task.dir/model.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/1_task.dir/model.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/model.cpp > CMakeFiles/1_task.dir/model.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/model.cpp > CMakeFiles/1_task.dir/model.cpp.i
 
 CMakeFiles/1_task.dir/model.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/1_task.dir/model.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/model.cpp -o CMakeFiles/1_task.dir/model.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/model.cpp -o CMakeFiles/1_task.dir/model.cpp.s
+
+CMakeFiles/1_task.dir/tests.cpp.o: CMakeFiles/1_task.dir/flags.make
+CMakeFiles/1_task.dir/tests.cpp.o: ../tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/1_task.dir/tests.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/1_task.dir/tests.cpp.o -c /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tests.cpp
+
+CMakeFiles/1_task.dir/tests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/1_task.dir/tests.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tests.cpp > CMakeFiles/1_task.dir/tests.cpp.i
+
+CMakeFiles/1_task.dir/tests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/1_task.dir/tests.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/tests.cpp -o CMakeFiles/1_task.dir/tests.cpp.s
 
 # Object files for target 1_task
 1_task_OBJECTS = \
 "CMakeFiles/1_task.dir/main.cpp.o" \
 "CMakeFiles/1_task.dir/tasks.cpp.o" \
 "CMakeFiles/1_task.dir/students.cpp.o" \
-"CMakeFiles/1_task.dir/model.cpp.o"
+"CMakeFiles/1_task.dir/model.cpp.o" \
+"CMakeFiles/1_task.dir/tests.cpp.o"
 
 # External object files for target 1_task
 1_task_EXTERNAL_OBJECTS =
@@ -123,9 +137,10 @@ CMakeFiles/1_task.dir/model.cpp.s: cmake_force
 1_task: CMakeFiles/1_task.dir/tasks.cpp.o
 1_task: CMakeFiles/1_task.dir/students.cpp.o
 1_task: CMakeFiles/1_task.dir/model.cpp.o
+1_task: CMakeFiles/1_task.dir/tests.cpp.o
 1_task: CMakeFiles/1_task.dir/build.make
 1_task: CMakeFiles/1_task.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable 1_task"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable 1_task"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/1_task.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -138,6 +153,6 @@ CMakeFiles/1_task.dir/clean:
 .PHONY : CMakeFiles/1_task.dir/clean
 
 CMakeFiles/1_task.dir/depend:
-	cd /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/1_task.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/1_task.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/1_task.dir/depend
 

@@ -21,3 +21,6 @@ CMakeFiles/1_task.dir/tasks.cpp.o: ../students.h
 CMakeFiles/1_task.dir/tasks.cpp.o: ../tasks.cpp
 CMakeFiles/1_task.dir/tasks.cpp.o: ../tasks.h
 
+CMakeFiles/1_task.dir/tests.cpp.o: ../catch.hpp
+CMakeFiles/1_task.dir/tests.cpp.o: ../tests.cpp
+

@@ -1,4 +1,4 @@
-/snap/clion/88/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task
+/snap/clion/100/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug
+-- Build files have been written to: /home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug
