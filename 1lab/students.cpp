@@ -17,7 +17,7 @@ int Student::getLevel (const std::string& subj) const{
             return i.second;
     return 0;
 }
- int Student::getPoints() const {
+int Student::getPoints() const {
     return points;
 }
 
@@ -32,7 +32,7 @@ void Student::setStrategy(int newStrategy) {
 void Student::updKnowledges(const Task &taskDone) {
     for (auto &i: knowledges){
         if (taskDone.hasKnowledge(i.first)){
-            i.second += (i.second)*taskDone.getComlexity()/taskDone.getMaxComplexity() + 1;
+            i.second += (i.second)*taskDone.getComplexity()/taskDone.getMaxComplexity() + 1;
             i.second = std::min(i.second, 100);
         }
     }
@@ -53,7 +53,7 @@ int Student::chooseIndOfTask(const std::vector<Task>& tasks, const std::vector<b
             }
         for (int i = 0; i < tasks.size(); i++){
             if (!done[i]){
-                if (tasks[i].getComlexity() < tasks[minCompl].getComlexity())
+                if (tasks[i].getComplexity() < tasks[minCompl].getComplexity())
                     minCompl = i;
             }
         }
@@ -68,7 +68,7 @@ int Student::chooseIndOfTask(const std::vector<Task>& tasks, const std::vector<b
             }
         for (int i = 0; i < tasks.size(); i++){
             if (!done[i]){
-                if (tasks[i].getComlexity() > tasks[maxCompl].getComlexity())
+                if (tasks[i].getComplexity() > tasks[maxCompl].getComplexity())
                     maxCompl = i;
             }
         }

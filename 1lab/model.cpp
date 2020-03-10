@@ -14,6 +14,7 @@ Model::Model(int numOfstudents, int numOfTasks, const std::vector<std::string>& 
     }
     studentsBase = students;
 
+
     for (int i = 0; i < numOfTasks; i++)
         tasks.push_back(generateTask(gen));
     tasksBase = tasks;
@@ -169,7 +170,7 @@ void Model::startLimitLessSim() {
     for (const auto& i: tasks){
         list1.emplace_back(i,0);
         list2.emplace_back(i,0);
-        list3.emplace_back(i,i.getComlexity());
+        list3.emplace_back(i,i.getComplexity());
     }
     std::vector<int> daysToWork(students.size()); //indexes equel to indexes of students in vector of students
     std::vector<int> taskInProcess (students.size());// has index of task being done
@@ -255,3 +256,18 @@ void Model::startLimitLessSim() {
 
 }
 
+int Model::getNumOfStudents() const {
+    return studentsNum;
+}
+
+int Model::getNumOfTasks() const {
+    return tasksNum;
+}
+
+std::vector<Student> Model::getStudents() const {
+    return studentsBase;
+}
+
+std::vector<Task> Model::getTasks() const {
+    return tasksBase;
+}

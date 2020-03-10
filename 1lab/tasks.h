@@ -24,13 +24,13 @@ class Task {
 public:
     Task() = default;
     Task(const std::vector < std::string>& disciplines, int points, int typeOfTask, int comple);
-    int pointsFor (const Student& student) const;
-    int daysFor (const Student& student) const;
-    int getMaxPonts() const;
-    int getComlexity() const;
-    int getMaxComplexity() const;
-    std::vector< std::string > getKnowledges() const;
-    bool hasKnowledge(const std::string& searched) const;
+    [[nodiscard]] int pointsFor (const Student& student) const;
+    [[nodiscard]] int daysFor (const Student& student) const;
+    [[nodiscard]] int getMaxPonts() const;
+    [[nodiscard]] int getComplexity() const;
+    [[nodiscard]] int getMaxComplexity() const;
+    [[nodiscard]] std::vector< std::string > getKnowledges() const;
+    [[nodiscard]] bool hasKnowledge(const std::string& searched) const;
     Task& operator=(const Task& A);
 };
 

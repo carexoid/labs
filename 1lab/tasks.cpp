@@ -45,7 +45,6 @@ int Task::daysFor(const Student &student) const {
         sum +=  i.second * 1.0/ curLevel.size();
         minimum = std::min( minimum,i.second);
     }
-
     std::mt19937 gen(time(0));
     std::uniform_int_distribution<> uid(0, 50), uid2(0,150);
     if (type == 1)
@@ -57,7 +56,7 @@ int Task::daysFor(const Student &student) const {
     return 260/(floor((sum + (double) minimum)*(complexity)/maxComplexity)+ uid2(gen) ) + 1;
 }
 
-int Task::getComlexity() const {
+int Task::getComplexity() const {
     return complexity;
 }
 
@@ -82,7 +81,7 @@ bool Task::hasKnowledge(const std::string& searched) const {
 
 std::ostream& operator<< (std::ostream& out, const Task& A){
     std::vector <std::string>  req = A.getKnowledges();
-    out << "\nPoints maximum: " << A.getMaxPonts() << "\nComplexity: " << A.getComlexity();
+    out << "\nPoints maximum: " << A.getMaxPonts() << "\nComplexity: " << A.getComplexity();
     out << "\nSubjects required:\n";
     for (const auto& i: req)
         out << "    Subject: " << i << '\n';
@@ -98,5 +97,5 @@ Task& Task::operator=(const Task &A) {
 }
 
 bool operator==(const Task& A, const Task& B){
-    return A.getKnowledges() == B.getKnowledges() && A.getComlexity()== B.getComlexity() && A.getMaxPonts() == B.getMaxPonts();
+    return A.getKnowledges() == B.getKnowledges() && A.getComplexity()== B.getComplexity() && A.getMaxPonts() == B.getMaxPonts();
 }

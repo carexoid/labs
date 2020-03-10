@@ -21,10 +21,10 @@ class Student {
 public:
     Student();
     Student(const std::vector< std::pair <std::string, int> > &baseKnowledges, int baseStrategy);
-    int getLevel (const std::string& subj) const;
-    int getPoints() const;
-    int getStrategy() const;
-    std::vector< std::pair <std::string, int> > getKnowledges() const;
+    [[nodiscard]] int getLevel (const std::string& subj) const;
+    [[nodiscard]] int getPoints() const;
+    [[nodiscard]] int getStrategy() const;
+    [[nodiscard]] std::vector< std::pair <std::string, int> > getKnowledges() const;
 
     void setStrategy (int newStrategy);
     void updKnowledges (const Task& taskDone);

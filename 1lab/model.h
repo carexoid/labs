@@ -32,6 +32,12 @@ public:
     void startTimeLimSim (int days); //gets number of days for simulation
     void startPointLimSim (int points); //gets number of points to be reached throe the simulation;
     void startLimitLessSim();
+
+    [[nodiscard]] int getNumOfStudents() const;
+    [[nodiscard]] int getNumOfTasks() const;
+    [[nodiscard]] std::vector<Student> getStudents() const;
+    [[nodiscard]] std::vector<Task> getTasks() const;
+
 };
 
 
