@@ -25,8 +25,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 public final class Server {
     private ServerSocketChannel serverChannel;
     private Selector selector;
-    private ExecutorService executor;
-    private Storage storage;
+    private final ExecutorService executor;
+    private final Storage storage;
 
     public Server() {
         int cores = Runtime.getRuntime().availableProcessors();
