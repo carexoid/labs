@@ -1,28 +1,22 @@
 package server;
 
-import common.SerializationUtil;
 import common.ServerHostData;
-import common.Student;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.*;
 
-public final class Server {
+public class Server {
     private ServerSocketChannel serverChannel;
     private Selector selector;
     private final ExecutorService executor;
@@ -34,7 +28,7 @@ public final class Server {
         storage = new Storage();
     }
 
-    private void setup(String address, int port) throws IOException {
+    protected void setup(String address, int port) throws IOException {
         serverChannel = ServerSocketChannel.open();
         serverChannel.socket().bind(new InetSocketAddress(address, port));
         serverChannel.configureBlocking(false);
@@ -43,23 +37,69 @@ public final class Server {
         SelectionKey selectKey = serverChannel.register(selector, ops, null);
     }
 
-    public void run(String address, int port) throws IOException {
+    protected void processKeys() throws IOException {
+        selector.select();
+        Set<SelectionKey> keys = selector.selectedKeys();
+        Iterator<SelectionKey> keyIter = keys.iterator();
+
+        while (keyIter.hasNext()) {
+            SelectionKey currentKey = keyIter.next();
+            if (currentKey.isAcceptable()) {
+                acceptConnection();
+            } else if (currentKey.isReadable()) {
+                readBuffer(currentKey);
+            }
+            keyIter.remove();
+        }
+    }
+
+
+    /**
+     *
+     * @param address adress to run server on
+     * @param port port to run server on
+     * @param secondsTimeout if < 1 - server runs endless,
+     *                           else stops after time in seconds set here
+     * @throws IOException
+     */
+    public void run(String address, int port, long secondsTimeout) throws IOException, InterruptedException {
         setup(address, port);
 
-        while (true) {
-            selector.select();
-            Set<SelectionKey> keys = selector.selectedKeys();
-            Iterator<SelectionKey> keyIter = keys.iterator();
+        long start = System.currentTimeMillis();
 
-            while (keyIter.hasNext()) {
-                SelectionKey currentKey = keyIter.next();
-                if (currentKey.isAcceptable()) {
-                    acceptConnection();
-                } else if (currentKey.isReadable()) {
-                    readBuffer(currentKey);
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+
+        Future<?> future = executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        processKeys();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-                keyIter.remove();
             }
+        });
+
+        executor.shutdown();
+
+        if (secondsTimeout > 0) {
+            try {
+                future.get(secondsTimeout, TimeUnit.SECONDS);
+            } catch (TimeoutException e) {
+                future.cancel(true);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        } else {
+            while(!executor.awaitTermination(1, TimeUnit.MINUTES)) {
+                Thread.sleep(10000);
+            }
+        }
+
+        if(!executor.awaitTermination(2, TimeUnit.SECONDS)){
+            executor.shutdownNow();
         }
     }
 
@@ -83,66 +123,28 @@ public final class Server {
 
     public static void main(String[] args) {
         try {
-            new Server().run(ServerHostData.ADDRESS, ServerHostData.PORT);
-        } catch (IOException ex) {
-            Logger.log(ex.getMessage());
+            new Server().run(ServerHostData.ADDRESS, ServerHostData.PORT, 0);
+        } catch (Exception ex) {
+            Logger.log(System.err, ex.getMessage());
         }
+
+        // crutch needed after modification of method run()
+        System.exit(0);
     }
 
 }
 
 final class Logger {
-    public static synchronized void log(Object... logged) {
+    public static synchronized void log(PrintStream os, Object... logged) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        System.err.print("[LOGGED: " + dtf.format(now) + "] ");
+        os.print("[LOGGED: " + dtf.format(now) + "] ");
         for (Object row : logged) {
-            System.err.println(row);
+            os.println(row);
         }
     }
 
 }
 
-final class Storage {
-    private final ArrayList<Student> students;
-
-    public Storage() {
-        students = new ArrayList<>();
-    }
-
-    public synchronized void add(Student student) {
-        students.add(student);
-    }
-
-    public synchronized Student get(int index) {
-        return students.get(index);
-    }
-
-    public synchronized Object[] toArray() {
-        return students.toArray();
-    }
-}
-
-final class DataProcessor implements Runnable {
-
-    private final byte[] serializedData;
-    private final Storage storage;
-
-    public DataProcessor (Storage storage, byte[] serializedData) {
-        this.serializedData = serializedData;
-        this.storage = storage;
-    }
-
-    @Override
-    public void run() {
-        try {
-            Student student = (Student) SerializationUtil.deserialize(serializedData);
-            storage.add(student);
-            Logger.log("Got new student: ", student);
-        } catch (Exception ex) {
-            Logger.log(Arrays.stream(ex.getStackTrace()).toArray());
-        }
-    }
-}
 
 

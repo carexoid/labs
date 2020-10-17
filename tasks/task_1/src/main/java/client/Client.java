@@ -9,7 +9,7 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
-public final class Client {
+public class Client {
 
     public void run(String address, int port) throws IOException {
         SocketChannel client = SocketChannel.open(
