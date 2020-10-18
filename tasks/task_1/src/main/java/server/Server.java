@@ -53,7 +53,6 @@ public class Server {
         }
     }
 
-
     /**
      *
      * @param address adress to run server on
@@ -64,8 +63,6 @@ public class Server {
      */
     public void run(String address, int port, long secondsTimeout) throws IOException, InterruptedException {
         setup(address, port);
-
-        long start = System.currentTimeMillis();
 
         ExecutorService executor = Executors.newFixedThreadPool(4);
 
@@ -93,23 +90,29 @@ public class Server {
                 e.printStackTrace();
             }
         } else {
-            while(!executor.awaitTermination(1, TimeUnit.MINUTES)) {
-                Thread.sleep(10000);
+            while(!executor.awaitTermination(1, TimeUnit.SECONDS)) {
+                Thread.sleep(1000);
             }
         }
 
         if(!executor.awaitTermination(2, TimeUnit.SECONDS)){
             executor.shutdownNow();
         }
+        executor.shutdownNow();
+
+        serverChannel.close();
+
+        executor = null;
+    
     }
 
-    private void acceptConnection() throws IOException {
+    protected void acceptConnection() throws IOException {
         SocketChannel clientChannel = serverChannel.accept();
         clientChannel.configureBlocking(false);
         clientChannel.register(selector, SelectionKey.OP_READ);
     }
 
-    private void readBuffer(SelectionKey key) throws IOException {
+    protected void readBuffer(SelectionKey key) throws IOException {
         SocketChannel clientChannel = (SocketChannel) key.channel();
         ByteBuffer buffer = ByteBuffer.allocate(1024);
 

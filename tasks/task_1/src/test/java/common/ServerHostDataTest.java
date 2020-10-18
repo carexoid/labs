@@ -12,6 +12,6 @@ public class ServerHostDataTest {
     
     @Test
     public void TestPort() {
-        assertEquals(ServerHostData.PORT, 7778);
+        assertEquals(ServerHostData.PORT, 7779);
     }
 }
