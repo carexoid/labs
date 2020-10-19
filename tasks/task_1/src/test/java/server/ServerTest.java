@@ -28,6 +28,8 @@ public class ServerTest {
         serverMock.run(TEST_HOST, TEST_PORT, 2);
 
         verify(serverMock).setup(TEST_HOST, TEST_PORT);
+
+        verify(serverMock).stopServer();
     }
 
     @Test
@@ -78,9 +80,6 @@ public class ServerTest {
 
         verify(serverMock).readBuffer(any());
 
-        serverFuture = null;
-        clientFuture = null;
 
-        executor = null;
     }
 }

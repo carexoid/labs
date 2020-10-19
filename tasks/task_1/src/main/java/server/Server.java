@@ -22,12 +22,17 @@ public class Server {
     private final ExecutorService executor;
     private final Storage storage;
 
+    private volatile boolean running;
+
     public Server() {
         int cores = Runtime.getRuntime().availableProcessors();
         executor = Executors.newFixedThreadPool(cores);
         storage = new Storage();
     }
 
+    protected void stopServer() {
+        running = false;
+    }
     protected void setup(String address, int port) throws IOException {
         serverChannel = ServerSocketChannel.open();
         serverChannel.socket().bind(new InetSocketAddress(address, port));
@@ -62,14 +67,15 @@ public class Server {
      * @throws IOException
      */
     public void run(String address, int port, long secondsTimeout) throws IOException, InterruptedException {
+        running = true;
         setup(address, port);
 
-        ExecutorService executor = Executors.newFixedThreadPool(4);
+        ExecutorService executor = Executors.newFixedThreadPool(1);
 
         Future<?> future = executor.submit(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (running) {
                     try {
                         processKeys();
                     } catch (IOException e) {
@@ -85,6 +91,7 @@ public class Server {
             try {
                 future.get(secondsTimeout, TimeUnit.SECONDS);
             } catch (TimeoutException e) {
+                stopServer();
                 future.cancel(true);
             } catch (ExecutionException e) {
                 e.printStackTrace();
@@ -102,8 +109,6 @@ public class Server {
 
         serverChannel.close();
 
-        executor = null;
-    
     }
 
     protected void acceptConnection() throws IOException {
@@ -131,8 +136,6 @@ public class Server {
             Logger.log(System.err, ex.getMessage());
         }
 
-        // crutch needed after modification of method run()
-        System.exit(0);
     }
 
 }

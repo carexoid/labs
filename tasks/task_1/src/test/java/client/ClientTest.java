@@ -11,7 +11,7 @@ import java.nio.channels.ServerSocketChannel;
 public class ClientTest {
 
     private final String TEST_HOST = "localhost";
-    private final int TEST_PORT = 8888;
+    private final int TEST_PORT = 9888;
 
     private Client testClient;
 
@@ -32,9 +32,9 @@ public class ClientTest {
     @Test
     public void testSuccessfulRun() throws IOException {
         ServerSocketChannel serverChannel = ServerSocketChannel.open();
-        serverChannel.socket().bind(new InetSocketAddress(TEST_HOST, TEST_PORT));
+        serverChannel.socket().bind(new InetSocketAddress(TEST_HOST, TEST_PORT + 1));
         serverChannel.configureBlocking(false);
 
-        testClient.run(TEST_HOST, TEST_PORT);
+        testClient.run(TEST_HOST, TEST_PORT + 1);
     }
 }
