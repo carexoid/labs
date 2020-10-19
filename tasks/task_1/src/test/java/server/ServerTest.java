@@ -86,7 +86,7 @@ public class ServerTest {
 
         SelectionKey key = captor.capture();
         // That's impossible to get channel out of this key now,
-        // because client already was diaconnected and server stopped.
+        // because client has already been disconnected and server stopped.
         // However this test shows that readBuffer was called with SelectionKey!
 
     }
