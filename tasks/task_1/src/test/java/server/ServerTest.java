@@ -4,8 +4,10 @@ import client.Client;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
+import org.mockito.ArgumentCaptor;
 
 import java.io.IOException;
+import java.nio.channels.SelectionKey;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -78,8 +80,14 @@ public class ServerTest {
 
         verify(serverMock).acceptConnection();
 
-        verify(serverMock).readBuffer(any());
+        final ArgumentCaptor<SelectionKey> captor = ArgumentCaptor.forClass(SelectionKey.class);
 
+        verify(serverMock).readBuffer(captor.capture());
+
+        SelectionKey key = captor.capture();
+        // That's impossible to get channel out of this key now,
+        // because client already was diaconnected and server stopped.
+        // However this test shows that readBuffer was called with SelectionKey!
 
     }
 }

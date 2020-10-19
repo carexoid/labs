@@ -20,17 +20,6 @@ public class Storage {
     }
 
     public synchronized Student[] toArray() {
-
-        Object[] arr = students.toArray();
-
-        Student[] res = new Student[arr.length];
-
-        int i = 0;
-
-        for (Object student : arr) {
-            res[i++] = (Student)student;
-        }
-
-        return res;
+        return students.toArray(new Student[0]);
     }
 }

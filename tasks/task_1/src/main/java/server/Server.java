@@ -64,7 +64,7 @@ public class Server {
      * @param port port to run server on
      * @param secondsTimeout if < 1 - server runs endless,
      *                           else stops after time in seconds set here
-     * @throws IOException
+     * @throws IOException, InterruptedException
      */
     public void run(String address, int port, long secondsTimeout) throws IOException, InterruptedException {
         running = true;
