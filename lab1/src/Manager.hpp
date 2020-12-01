@@ -17,10 +17,19 @@
 
 namespace lab {
 
+    /**
+     * @enum Operations
+     * @brief possible binary operations
+     */
     enum class Operations {
         AND, OR
     };
 
+    /**
+     * @class Manager
+     * @brief manages computation of f(x) @ g(x) statement, where @ is one of possible operations (AND/OR)
+     * @tparam Operation operation to be applied to function results
+     */
     template <Operations Operation>
     class Manager {
     public: // methods
@@ -31,8 +40,16 @@ namespace lab {
             , _operation(Operation)
         {}
 
+        /**
+         * @brief Runs computation of each function in its own process, got the result of computation by named pipes
+         * @param arg integer to pass to functions being computed
+         * @throws lab::CantCreateFIFOException
+         */
         void compute(int arg);
 
+        /**
+         * @brief Resets results of a previous computation
+         */
         void reset();
 
     private: // methods
