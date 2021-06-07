@@ -12,4 +12,4 @@
   [RTEA](https://uk.wikipedia.org/wiki/RTEA)
   
 ## 3 lab
-  [RIPEMD-256](https://ru.wikipedia.org/wiki/RIPEMD-256)
+  [Adler-32](https://ru.wikipedia.org/wiki/Adler-32)

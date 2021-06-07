@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.19)
+project(lab3)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+find_package(ZLIB REQUIRED)
+add_executable(lab3 main.cpp)
+target_link_libraries(lab3 PRIVATE ZLIB::ZLIB)
