@@ -9,7 +9,7 @@
   6. [Extended Euclidean Algorithm](http://e-maxx.ru/algo/export_extended_euclid_algorithm)
 
 ## 2 lab
-  [CAST-128](https://ru.wikipedia.org/wiki/CAST-128)
+  [RTEA](https://uk.wikipedia.org/wiki/RTEA)
   
 ## 3 lab
   [RIPEMD-256](https://ru.wikipedia.org/wiki/RIPEMD-256)
