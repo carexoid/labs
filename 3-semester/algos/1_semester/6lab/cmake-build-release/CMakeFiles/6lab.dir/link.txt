@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3 -DNDEBUG   CMakeFiles/6lab.dir/main.cpp.o  -o 6lab 
