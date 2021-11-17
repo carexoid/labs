@@ -1,0 +1,3 @@
+/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/1_task.dir
+/home/carexoid/Desktop/Univer/4sem/oop/4-semester-oop/1lab/cmake-build-debug/CMakeFiles/edit_cache.dir

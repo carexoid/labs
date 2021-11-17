@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3 -DNDEBUG   CMakeFiles/1_task.dir/main.cpp.o CMakeFiles/1_task.dir/tasks.cpp.o CMakeFiles/1_task.dir/students.cpp.o CMakeFiles/1_task.dir/model.cpp.o CMakeFiles/1_task.dir/tests.cpp.o  -o 1_task 

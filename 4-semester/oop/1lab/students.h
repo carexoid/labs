@@ -1,0 +1,41 @@
+//
+// Created by daniil on 26.10.2019.
+//
+
+#ifndef INC_1_TASK_STUDENTS_H
+#define INC_1_TASK_STUDENTS_H
+
+
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <iostream>
+
+class Task;
+
+class Student {
+    int points;
+    std::vector< std::pair <std::string, int> > knowledges;
+    int strategy; // 1 - the easiest, 2 - the hardest, 3 - more points, 4 - the best knoledges
+    bool cmpForKnow(std::pair<std::string,int>  a, std::pair<std::string,int>  b);
+public:
+    Student();
+    Student(const std::vector< std::pair <std::string, int> > &baseKnowledges, int baseStrategy);
+    [[nodiscard]] int getLevel (const std::string& subj) const;
+    [[nodiscard]] int getPoints() const;
+    [[nodiscard]] int getStrategy() const;
+    [[nodiscard]] std::vector< std::pair <std::string, int> > getKnowledges() const;
+
+    void setStrategy (int newStrategy);
+    void updKnowledges (const Task& taskDone);
+    int chooseIndOfTask (const std::vector<Task> &tasks, const std::vector<bool>& done);
+    void addPoints (int newPoints);
+
+    Student& operator=(const Student& A);
+
+};
+
+std::ostream& operator<< (std::ostream& out, const Student& A);
+
+
+#endif //INC_1_TASK_STUDENTS_H
