@@ -9,7 +9,6 @@
 # Object files
 *.o
 *.ko
-*.obj
 *.elf
 
 # Linker output
@@ -35,11 +34,6 @@
 *.la
 *.a
 *.lib
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
 
 # Shared objects (inc. Windows DLLs)
 *.dll
