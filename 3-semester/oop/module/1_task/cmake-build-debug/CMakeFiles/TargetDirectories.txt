@@ -1,0 +1,3 @@
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/1_task.dir
+/home/daniil/Univer/3sem/oop/git-module-1/module_test_1_oop/1_task/cmake-build-debug/CMakeFiles/edit_cache.dir
